@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-include('include/config.inc.php');
-
 require('include/fonctions/controles.php');
 require('include/actions/switchActions.php');
 
