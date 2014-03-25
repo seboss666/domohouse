@@ -37,7 +37,7 @@ function configurationIp() {
   $refresh = false;
   $config = file_get_contents("include/configData.json");
   if ($config === false) {
-    file_put_contents("include/configData.json", '{"IP":"127.0.0.1","Port":"8080"}');
+    file_put_contents("include/configData.json", '{"IP":"127.0.0.1","Port":"8080","ListeAppareils":[""]}');
   }
   else {
       $parsedJSON = json_decode($config, true);
@@ -53,7 +53,7 @@ function configurationListe() {
   $refresh = false;
   $config = file_get_contents("include/configData.json");
   if ($config === false) {
-    file_put_contents("include/configData.json", '{"ListeAppareils":[""]}');
+    file_put_contents("include/configData.json", '{"IP":"","Port":"","ListeAppareils":[""]}');
   }
   else {
       $parsedJSON = json_decode($config, true);
@@ -75,7 +75,7 @@ function configurationSave($listeAppareils) {
     }
 
     file_put_contents("include/configData.json", json_encode($parsedJSON));
-    header('Location: index.php');
+    header('Location: index.php?page=configMenu');
 
 }
 
@@ -87,7 +87,7 @@ function configurationSaveIp($IP,$Port) {
     $parsedJSON['Port'] = $Port;
 
     file_put_contents("include/configData.json", json_encode($parsedJSON));
-    header('Location: index.php');
+    header('Location: index.php?page=configMenu');
 
 }
 

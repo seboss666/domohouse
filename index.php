@@ -8,8 +8,8 @@ require('include/actions/switchActions.php');
 try {
     
     if (!file_exists('include/configData.json')) {
-        file_put_contents('include/configData.json', '{"ListeAppareils":[""]}');
-        header('Location: index.php?page=configListe');
+        file_put_contents('include/configData.json', '{"IP":"","Port":"","ListeAppareils":[""]}');
+        header('Location: index.php?page=configIP');
     }
 
     if (isset($_GET['page'])) {
