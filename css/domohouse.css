@@ -1,0 +1,208 @@
+body {
+	background: rgba(0,0,0,0.85);
+	color: rgb(200,200,200);
+}
+
+.headimg {
+	display: inline;
+	margin: 0 auto;
+	height: 48px;
+	width: 48px;
+	margin-top: 5px;
+}
+
+.switch {
+	display: block;
+	width: 128px;
+	height: 128px;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 2px;
+}
+
+.switch2 {
+	display: block;
+	width: 128px;
+	height: 64px;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 2px;
+}
+
+.notrecognized {
+	background: url(../img/notrecognized.png) no-repeat;
+}
+
+/*Ampoules */
+.lightoff {
+	background: url(../img/light0.png) no-repeat; 
+}
+
+.lighton {
+	background: url(../img/light100.png) no-repeat;
+}
+
+/*Generique */
+.switchon {
+	background: url(../img/switchon.png) no-repeat;	
+}
+
+.switchoff {
+	background: url(../img/switchoff.png) no-repeat;
+}
+
+/*Ventilos */
+.fanon {
+	background: url(../img/fanon.png) no-repeat;	
+}
+
+.fanoff {
+	background: url(../img/fanoff.png) no-repeat;
+}
+
+/*TV */
+.tvon {
+	background: url(../img/tvon.png) no-repeat;	
+}
+
+.tvoff {
+	background: url(../img/tvoff.png) no-repeat;
+}
+
+/*Prise murale */
+.wallon {
+	background: url(../img/wallon.png) no-repeat;	
+}
+
+.walloff {
+	background: url(../img/walloff.png) no-repeat;
+}
+
+/*hauts-parleurs */
+.speakon {
+	background: url(../img/speakon.png) no-repeat;	
+}
+
+.speakoff {
+	background: url(../img/speakoff.png) no-repeat;
+}
+
+/*HDD */
+.hddon {
+	background: url(../img/switchon.png) no-repeat;	
+}
+
+.hddoff {
+	background: url(../img/switchoff.png) no-repeat;
+}
+
+/*Imprimante */
+.printeron {
+	background: url(../img/switchon.png) no-repeat;	
+}
+
+.printeroff {
+	background: url(../img/switchoff.png) no-repeat;
+}
+
+/*Ampli */
+.amplion {
+	background: url(../img/switchon.png) no-repeat;	
+}
+
+.amplioff {
+	background: url(../img/switchoff.png) no-repeat;
+}
+
+/*Ordinateur */
+.computon {
+	background: url(../img/switchon.png) no-repeat;	
+}
+
+.computoff {
+	background: url(../img/switchoff.png) no-repeat;
+}
+
+/*Cheminée */
+.fireon {
+	background: url(../img/switchon.png) no-repeat;	
+}
+
+.fireoff {
+	background: url(../img/switchoff.png) no-repeat;
+}
+
+/*Températures*/
+
+.temp {
+	font-size: 3rem;
+	padding-top: 1rem;	
+}
+
+.r0010 {
+	color: #0058b7;
+}
+
+.r1020 {
+	color: #2a7fff;
+}
+
+.r2030 {
+	color: #309135;
+}
+
+.r3040 {
+	color: #f6b81d;
+}
+
+.r4050 {
+	color: #ff6600;
+}
+
+.r50plus {
+	color: #d12c2c;
+}
+
+/*Météo*/
+.sunshine {
+	background: url(../img/sunshine.png) no-repeat;
+}
+
+.cloudy {
+	background: url(../img/cloudy.png) no-repeat;
+}
+
+/*Provisoire : CSS pour les fichiers de configuration*/
+table,tbody,th,tr,td {
+	border: 1px solid rgba(255,255,255,0.06);
+	border-collapse: collapse;
+	background: rgba(10,10,10,0.3);
+	text-align: center;
+	padding: 5px;
+	color: #777;
+}
+
+table {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+tr {
+	width: 100px;
+	height: 15px;
+}
+
+.sort-disabled {
+	border: none;
+	height: 1px;
+}
+
+.sendbutton {
+	color: #666;
+}
+
+.listePlaceholder { 
+	width: 100px;
+	height: 15px;
+	border: 1px solid white;
+}
