@@ -1,21 +1,76 @@
+/* Clearfix by Nicolas Gallagher */
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+
+
+/* Layout */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font: 100%/1.5 "Open Sans", sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
 	background: rgba(0,0,0,0.85);
 	color: rgb(200,200,200);
+	font-size: 100%;
 }
 
-.headimg {
-	display: inline;
-	margin: 0 auto;
+.container {
+  margin: 0 auto;
+}
+
+/* Header */
+
+header {
+	border-bottom: 1px solid white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#home img, #config img {
 	height: 48px;
 	width: 48px;
-	margin-top: 5px;
 }
+
+#date_heure {
+	flex: 1;
+	text-align: center;
+}
+
+/* Section */
+
+section {
+  text-align: center;
+}
+
+.column { margin-bottom: 1.5rem; }
+
+/* Images Appareils */
 
 .switch {
 	display: block;
-	width: 128px;
-	height: 128px;
-	margin: 0 auto;
+	width: 96px;
+	height: 96px;
+	margin: 10px auto;
 	text-align: center;
 	padding-bottom: 2px;
 }
@@ -33,106 +88,7 @@ body {
 	background: url(../img/notrecognized.png) no-repeat;
 }
 
-/*Ampoules */
-.lightoff {
-	background: url(../img/light0.png) no-repeat; 
-}
-
-.lighton {
-	background: url(../img/light100.png) no-repeat;
-}
-
-/*Generique */
-.switchon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.switchoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Ventilos */
-.fanon {
-	background: url(../img/fanon.png) no-repeat;	
-}
-
-.fanoff {
-	background: url(../img/fanoff.png) no-repeat;
-}
-
-/*TV */
-.tvon {
-	background: url(../img/tvon.png) no-repeat;	
-}
-
-.tvoff {
-	background: url(../img/tvoff.png) no-repeat;
-}
-
-/*Prise murale */
-.wallon {
-	background: url(../img/wallon.png) no-repeat;	
-}
-
-.walloff {
-	background: url(../img/walloff.png) no-repeat;
-}
-
-/*hauts-parleurs */
-.speakon {
-	background: url(../img/speakon.png) no-repeat;	
-}
-
-.speakoff {
-	background: url(../img/speakoff.png) no-repeat;
-}
-
-/*HDD */
-.hddon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.hddoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Imprimante */
-.printeron {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.printeroff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Ampli */
-.amplion {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.amplioff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Ordinateur */
-.computon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.computoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Cheminée */
-.fireon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.fireoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Températures*/
+/* Températures */
 
 .temp {
 	font-size: 3rem;
@@ -163,7 +119,7 @@ body {
 	color: #d12c2c;
 }
 
-/*Météo*/
+/* Météo */
 .sunshine {
 	background: url(../img/sunshine.png) no-repeat;
 }
@@ -172,37 +128,84 @@ body {
 	background: url(../img/cloudy.png) no-repeat;
 }
 
-/*Provisoire : CSS pour les fichiers de configuration*/
-table,tbody,th,tr,td {
-	border: 1px solid rgba(255,255,255,0.06);
-	border-collapse: collapse;
+/* CSS pour les fichiers de configuration */
+
+#SortedList, #UnusedList { 
+	list-style-type: none;
+	margin: 5% 0;
+	padding: 0;
+}
+
+#SortedList li, #UnusedList li {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 5px;
 	background: rgba(10,10,10,0.3);
-	text-align: center;
-	padding: 5px;
-	color: #777;
+	border-top: none;
+	border-bottom: 1px solid rgba(255,255,255,0.06);
+	border-right: 1px solid rgba(255,255,255,0.06);
+	border-left: 1px solid rgba(255,255,255,0.06);
+	cursor: move;
+	
 }
 
-table {
-	margin-left:auto;
-	margin-right:auto;
+#SortedList li:first-of-type, #UnusedList li:first-of-type {
+	border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-tr {
-	width: 100px;
-	height: 15px;
+#SortedList .icone, #UnusedList .icone {
 }
 
-.sort-disabled {
-	border: none;
-	height: 1px;
+#SortedList .icone img, #UnusedList .icone img {
+	width: 48px;
+	height: 48px;
+}
+
+#SortedList .nom, #UnusedList .nom {
+	flex: 1;
+	padding: 0 5px;
+}
+
+#SortedList .temp, #UnusedList .temp {
+	font-size: 1rem;
+	padding-top: 0;
 }
 
 .sendbutton {
 	color: #666;
 }
 
-.listePlaceholder { 
-	width: 100px;
-	height: 15px;
-	border: 1px solid white;
+/* Media Queries */
+
+@media screen and (min-width: 20rem) {
+	.column {
+		float: left;
+		margin: 0;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.column.full { width: 100%; }
+	.column.half { width: 50%; }
+}
+
+@media screen and (min-width: 40.5rem) {
+	html {
+		font-size: 112%;
+	}
+	
+	.switch {
+		width: 128px;
+		height: 128px;
+		cursor: pointer;
+	}
+}
+
+@media screen and (min-width: 64rem) {
+	html {
+		font-size: 120%;
+	}
 }

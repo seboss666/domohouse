@@ -5,25 +5,19 @@ include('include/fonctions/functions.php');
 function accueil() {
   $titre = "Accueil";
   $refresh = true;
-  $configFile = file_get_contents("include/configData.json");
-  $config = json_decode($configFile, true);
+  $config = file_get_contents("include/configData.json");
+  $parsedJSON = json_decode($config, true);
 
-  if (!$config['IP'] OR !$config['Port']) {
-    header('Location: index.php?page=configIp');
+  if (!$parsedJSON['IP'] OR !$parsedJSON['Port']) {
+      header('Location: index.php?page=configIp');
   }
-  elseif (!$config['ListeAppareils']) {
-      header('Location: index.php?page=configliste');
+  elseif (!$parsedJSON['ListeAppareils']) {
+      header('Location: index.php?page=configListe');
   }
-  $devicesFinal = filterDevices($config['ListeAppareils']);
+
+  $devicesFinal = filterDevices($parsedJSON['ListeAppareils']);
   require('vues/accueil.php');
 
-}
-
-function plan($id) {
-  $refresh = true;
-  $titre = "Plans";
-  $devicesFinal = planDevices($id);
-  require('vues/accueil.php');
 }
 
 function configurationMenu() {
@@ -37,7 +31,7 @@ function configurationIp() {
   $refresh = false;
   $config = file_get_contents("include/configData.json");
   if ($config === false) {
-    file_put_contents("include/configData.json", '{"IP":"127.0.0.1","Port":"8080","ListeAppareils":[""]}');
+    file_put_contents("include/configData.json", '{"IP":"127.0.0.1","Port":"8080"}');
   }
   else {
       $parsedJSON = json_decode($config, true);
@@ -53,7 +47,7 @@ function configurationListe() {
   $refresh = false;
   $config = file_get_contents("include/configData.json");
   if ($config === false) {
-    file_put_contents("include/configData.json", '{"IP":"","Port":"","ListeAppareils":[""]}');
+    file_put_contents("include/configData.json", '{"ListeAppareils":[""]}');
   }
   else {
       $parsedJSON = json_decode($config, true);
@@ -75,7 +69,7 @@ function configurationSave($listeAppareils) {
     }
 
     file_put_contents("include/configData.json", json_encode($parsedJSON));
-    header('Location: index.php?page=configMenu');
+    header('Location: index.php');
 
 }
 
@@ -87,7 +81,7 @@ function configurationSaveIp($IP,$Port) {
     $parsedJSON['Port'] = $Port;
 
     file_put_contents("include/configData.json", json_encode($parsedJSON));
-    header('Location: index.php?page=configMenu');
+    header('Location: index.php');
 
 }
 
