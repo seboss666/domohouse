@@ -12,13 +12,8 @@ function filterDevices($idxList) {
       }
     }
   }
-
-  return $finalDev;
-}
-
-function planDevices($idplan) {
-  $devlist = getPlan($idplan);
-  return $devlist;
+  
+return $finalDev;
 }
 
 function deviceType($device) {
@@ -28,18 +23,12 @@ function deviceType($device) {
     case 'Lighting 6':
       switch ($device['SwitchType']) {
         case 'On/Off':
-          $bloc = '<div onclick="switchAction(\'Toggle\', \'' . $device['Status'] . '\', \'' . $device['idx'] . '\')" class="column half"><span class="switch ' . switchStatus($device) . '"></span>' . $device['Name'] . '</div>
+          $bloc = '<div class="column half"><img onclick="switchAction(\'Toggle\', \'' . $device['Status'] . '\', \'' . $device['idx'] . '\')" class="switch" src="img/' . switchStatus($device) . '"></img>' . $device['Name'] . '</div>
           ';
           break;
         case 'Dimmer':
-          if($device['Status'] == 'Off') {
-            $bloc = '<div onclick="switchAction(\'Toggle\', \'' . $device['Status'] . '\', \'' . $device['idx'] . '\')" class="column half"><span class="switch ' . switchStatus($device) . '"></span>' . $device['Name'] . '</div>
+            $bloc = '<div class="column half"><img onclick="" class="switch" src="img/' . switchStatus($device) . '"></img>' . $device['Name'] . '</div><div id="dialog" title="Variation"></div>
             ';
-          }
-          else {
-            $bloc = '<div onclick="switchAction(\'Toggle\', \'On\', \'' . $device['idx'] . '\')" class="column half"><span class="switch ' . switchStatus($device) . '"></span>' . $device['Name'] . '</div>
-            ';
-          }
         break;
       }
       break;
@@ -57,6 +46,33 @@ function deviceType($device) {
         ';
   }
   return $bloc;
+}
+
+function deviceTypeWithoutAction($device) {
+  $deviceInfo = array();
+  switch ($device['Type']) {
+    case 'Lighting 1':
+    case 'Lighting 2':
+    case 'Lighting 6':
+	$deviceInfo['type'] = 'img';
+	$deviceInfo['status'] = switchStatus($device);
+        break;
+    case 'temperature':
+    case 'Temp':
+        $deviceInfo['type'] = 'text';
+	$deviceInfo['status'] = tempStatus($device['Temp']);
+	$deviceInfo['subtype'] = 'temp';
+	$deviceInfo['value'] = number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '');
+	break;
+    case 'Temp + Humidity':
+        $bloc = '<div class="switch2 temp ' . tempStatus($device['Temp']) . '">' . number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '')  . '°' .'</div><div class="switch2">' . $device['Humidity'] . '%</div>' . $device['Name']
+        ;
+      break;
+    default:
+	$deviceInfo['type'] = 'img';
+	$deviceInfo['status'] = 'notrecognized';
+  }
+  return $deviceInfo;
 }
 
 //Fonctions pour les switches
@@ -137,5 +153,6 @@ function tempStatus($temperature) {
 
   return $status;
 }
+
 
 ?>

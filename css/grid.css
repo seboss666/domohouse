@@ -22,11 +22,6 @@ html {
   html { font-size: 120%; }
 }
 
-body {
-  background-color: #fff;
-  color: #555;
-}
-
 .container {
   margin: 0 auto;
   max-width: 53rem;

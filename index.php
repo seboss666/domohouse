@@ -9,7 +9,7 @@ try {
     
     if (!file_exists('include/configData.json')) {
         file_put_contents('include/configData.json', '{"IP":"","Port":"","ListeAppareils":[""]}');
-        header('Location: index.php?page=configIP');
+        header('Location: index.php?page=configIp');
     }
 
     if (isset($_GET['page'])) {
@@ -18,27 +18,13 @@ try {
         case 'accueil':
             accueil();
             break;
-        case 'plan':
-            if (isset($_GET['id'])) {
-                $idplan = htmlentities($_GET['id']);
-                if (preg_match('/\d{1,}/', $idplan)) {
-                    plan($idplan);
-                }
-                else {
-                    throw new Exception('id au mauvais format');
-                }
-            }
-            else {
-                throw new Exception('id du plan manquant');
-            }
-            break;
         case 'configMenu':
-            configurationMenu();
-            break;
-        case 'configIp':
-            configurationIp();
-            break;
-       case 'configListe':
+	    configurationMenu();
+	    break;
+	case 'configIp':
+	    configurationIp();
+	    break;
+        case 'configListe':
             configurationListe();
             break;
         case 'configSave':

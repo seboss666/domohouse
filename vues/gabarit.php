@@ -2,16 +2,16 @@
 <html lang="fr">
 <head>
 
-<?php if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
-' ; } ?>
+<?php /*if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
+' ; }*/ ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="Viewport" content="width=device-width, initial-scale=1">
 
 	<title>DomoHouse - <?php echo $titre; ?></title>
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/police.css">
+<!--	<link rel="stylesheet" type="text/css" href="css/grid.css">-->
 	<link rel="stylesheet" type="text/css" href="css/domohouse.css">
 
 	<script type="text/javascript" src="js/domohouse.js"></script> 
@@ -22,38 +22,39 @@
 		$(document).ready(function(){
 			$('#SortedList').sortable( {
 				connectWith: "#UnusedList",
-				forcePlaceholderSize: true,
-				cursor: "move",
 				scroll: false,
-				items: "tr:not(.sort-disabled)",
-				placeholder: "listePlaceholder",
+				revert: true,
 				update: function () {
 					var data = $('#SortedList').sortable('toArray');
-					document.testForm.ListeId.value = data;
+					document.triForm.ListeId.value = data;
+				},
+				receive: function(event, ui) {
+					if ($('#SortedList').children('li').length > 6 ) {
+						$('#UnusedList').sortable('cancel');
+					}
 				}
 			});
+			$('#SortedList').disableSelection();
 			$('#UnusedList').sortable( {
 				connectWith: "#SortedList",
-				forcePlaceholderSize: true,
-				items: "tr:not(.sort-disabled)",
-				placeholder: "listePlaceholder",
-				cursor: "move",
-				scroll: false
+				scroll: false,
+				revert: true
 			});	
+			$('#UnusedList').disableSelection();
 		});
-
 	</script>
 
 </head>
 
 <body>
 	<header>
-		<div class="container">
-			<div onclick="document.location.href='index.php'" class="column third headtxt"><img class="headimg" src="img/home-small.png"></div>
-			<div class="column third headtxt"><?php echo $titre; ?></div>
-			<div onclick="document.location.href='index.php?page=configMenu'" class="column third headtxt"><img class="headimg" src="img/cog-small.png"></div>
+		<div id="home"><img onclick="document.location.href='index.php'" src="img/home-small.png"></div>
+		<div id="date_heure">
+			<div id="heure">Heure</div>
+			<div id="date">Date</div>
 		</div>
-	</header>	
+		<div id="config"><img onclick="document.location.href='index.php?page=configMenu'" src="img/cog-small.png"></div>
+	</header>
 	<section>
 		<div class="container">
 <?php
@@ -62,5 +63,8 @@
 ?>
 		</div>
 	</section>
+	<script type="text/javascript">
+		window.onload = function() { heure('heure'); date('date'); };
+	</script>
 </body>
 </html>
