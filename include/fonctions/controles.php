@@ -57,6 +57,20 @@ function configurationIp() {
   require('vues/configIp.php');
 }
 
+function configurationTown() {
+  $titre = "Configuration de la ville";
+  $refresh = false;
+  $config = file_get_contents("include/configData.json");
+  if ($config === false) {
+    file_put_contents("include/configData.json", '{"Town":"","IP":"127.0.0.1","Port":"8080"}');
+  }
+  else {
+      $parsedJSON = json_decode($config, true);
+  }
+  $Town = $parsedJSON['Town'];
+  require('vues/configTown.php');
+}
+
 function configurationListe() {
 
   $titre = "Configuration des appareils";
@@ -114,6 +128,16 @@ function configurationSaveIp($IP,$Port) {
 
     file_put_contents("include/configData.json", json_encode($parsedJSON));
     header('Location: index.php');
+}
+
+function configurationSaveTown($Town) {
+    $config = file_get_contents("include/configData.json");
+    $parsedJSON = json_decode($config, true);
+    
+    $parsedJSON['Town'] = $Town;
+    
+    file_put_contents("include/configData.json", json_encode($parsedJSON));
+    header('Location: index.php');
 
 }
 
@@ -129,7 +153,6 @@ function about() {
   $refresh = false;
   require('vues/about.php');
 }
-
 
 //Affichage des erreurs
 function afficherErreur($msgErreur)

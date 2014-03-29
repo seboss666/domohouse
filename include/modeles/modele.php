@@ -2,6 +2,7 @@
 
 $config = file_get_contents("include/configData.json");
 $parsedJSON = json_decode($config, true);
+$Town = $parsedJSON['Town'];
 $IP = $parsedJSON['IP'];
 $Port = $parsedJSON['Port'];
 
