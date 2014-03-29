@@ -24,12 +24,15 @@
 				connectWith: "#UnusedList",
 				scroll: false,
 				revert: true,
+				items: "li:not(li:first-of-type)",
+				forcePlaceholderSize: true,
+				placeholder: "listePlaceholder",
 				update: function () {
 					var data = $('#SortedList').sortable('toArray');
 					document.triForm.ListeId.value = data;
 				},
 				receive: function(event, ui) {
-					if ($('#SortedList').children('li').length > 6 ) {
+					if ($('#SortedList').children('li').length > 7 ) {
 						$('#UnusedList').sortable('cancel');
 					}
 				}
@@ -38,7 +41,10 @@
 			$('#UnusedList').sortable( {
 				connectWith: "#SortedList",
 				scroll: false,
-				revert: true
+				revert: true,
+				items: "li:not(li:first-of-type)",
+				forcePlaceholderSize: true,
+				placeholder: "listePlaceholder",
 			});	
 			$('#UnusedList').disableSelection();
 		})
