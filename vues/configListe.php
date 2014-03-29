@@ -21,7 +21,7 @@
 					if ($deviceInfo[$liste[$i]['type']]['format'] == 'img') {
 ?>
 
-						<div><img src="img/<?php echo $deviceInfo[$liste[$i]['type']]['etat']; ?>"></img></div>
+						<div><img src="img/<?php echo $deviceInfo[$liste[$i]['type']]['etat']; ?>.png"></img></div>
 
 <?php
 					}
@@ -74,7 +74,7 @@
 					if ($deviceData['format'] == 'img') {
 ?>
 						
-						<div><img src="img/<?php echo $deviceData['etat']; ?>"></img></div>
+						<div><img src="img/<?php echo $deviceData['etat']; ?>.png"></img></div>
 
 <?php
 					}

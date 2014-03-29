@@ -1,1 +1,1 @@
-{"IP":"127.0.0.1","Port":"8080","ListeAppareils":[""]}
+{"Town":"588732","IP":"127.0.0.1","Port":"8080","ListeAppareils":[{"idx":"15","type":"switch"},{"idx":"19","type":"switch"},{"idx":"16","type":"switch"},{"idx":"18","type":"switch"},{"idx":"23","type":"unknown"}]}
