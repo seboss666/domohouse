@@ -11,7 +11,6 @@
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/police.css">
-<!--	<link rel="stylesheet" type="text/css" href="css/grid.css">-->
 	<link rel="stylesheet" type="text/css" href="css/slidebars.css">
 	<link rel="stylesheet" type="text/css" href="css/domohouse.css">
 
@@ -61,7 +60,7 @@
 			<div id="heure">Heure</div>
 			<div id="date">Date</div>
 		</div>
-<!--		<div id="config"><img onclick="document.location.href='index.php?page=configMenu'" src="img/cog-small.png"></div> -->
+		<div id="weather"><?php $currentWeather = weatherHeader("12727684"); ?><img class="meteo_img" src="<?php echo $currentWeather['img']; ?>"><span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span></div>
 	</header>
 	<section>
 		<div class="container">
@@ -80,7 +79,6 @@
 			<li><a href="index.php?page=configListe"><img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils"></a></li>
 			<li><a href="index.php?page=meteo&id=12727684"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"></a></li>
 			<li><a href="index.php?page=about"><img class="panelabout" src="img/pixel.gif" alt="À propos"></a></li>
-			<li><a href="index.php?page=plan&id=1">Salon</a></li>
 		</ul>
 	</div>
 	<!-- Slidebars -->
