@@ -8,7 +8,7 @@ require('include/actions/switchActions.php');
 try {
     
     if (!file_exists('include/configData.json')) {
-        file_put_contents('include/configData.json', '{"IP":"","Port":"","ListeAppareils":[""]}');
+        file_put_contents('include/configData.json', '{"Townid":"","IP":"","Port":"","ListeAppareils":[{"idx":"","type":""}]}');
         header('Location: index.php?page=configIp');
     }
 
@@ -56,6 +56,9 @@ try {
         	case 'configIp':
         	    configurationIp();
         	    break;
+            case 'configTown':
+                configurationTown();
+                break;
             case 'configListe':
                 configurationListe();
                 break;
@@ -73,6 +76,15 @@ try {
                     $IP = htmlentities($_POST['IP']);
                     $Port = htmlentities($_POST['Port']);
                     configurationSaveIp($IP,$Port);
+                }
+                else {
+                    throw new Exception("Action non permise !");
+                }
+                break;
+            case 'configSaveTown':
+                if (isset($_POST['Town'])) {
+                    $Town = htmlentities($_POST['Town']);
+                    configurationSaveTown($Town);
                 }
                 else {
                     throw new Exception("Action non permise !");

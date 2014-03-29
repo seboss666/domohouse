@@ -60,7 +60,7 @@
 			<div id="heure">Heure</div>
 			<div id="date">Date</div>
 		</div>
-		<div id="weather"><?php $currentWeather = weatherHeader("12727684"); ?><img class="meteo_img" src="<?php echo $currentWeather['img']; ?>"><span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span></div>
+		<div onclick="location.href='index.php?page=meteo&id=<?php global $Town; echo $Town; ?>'" id="weather"><?php $currentWeather = weatherHeader($Town); ?><img class="meteo_img" src="<?php echo $currentWeather['img']; ?>"><span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span></div>
 	</header>
 	<section>
 		<div class="container">
@@ -77,7 +77,7 @@
 			<li><a href="index.php?page=accueil"><img class="panelhome" src="img/pixel.gif" alt="Accueil"></a></li>
 			<li><a href="index.php?page=configIp"><img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz"></a></li>
 			<li><a href="index.php?page=configListe"><img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils"></a></li>
-			<li><a href="index.php?page=meteo&id=12727684"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"></a></li>
+			<li><a href="index.php?page=configTown"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"></a></li>
 			<li><a href="index.php?page=about"><img class="panelabout" src="img/pixel.gif" alt="À propos"></a></li>
 		</ul>
 	</div>
