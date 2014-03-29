@@ -16,6 +16,11 @@ function filterDevices($idxList) {
 return $finalDev;
 }
 
+function planDevices($idplan) {
+  $devlist = getPlan($idplan);
+  return $devlist;
+}
+
 function deviceType($device) {
   $deviceInfo = array();
   switch ($device['Type']) {

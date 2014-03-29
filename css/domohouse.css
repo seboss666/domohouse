@@ -23,7 +23,7 @@ html {
 }
 
 body {
-	background: rgba(0,0,0,0.85);
+	background: url(../img/bg01.jpg) repeat scroll 0% 0% rgba(0,0,0,0.85);
 	color: rgb(200,200,200);
 	font-size: 100%;
 }
@@ -32,6 +32,47 @@ body {
   margin: 0 auto;
 }
 
+/* =====================================================================
+				Panel					*/
+
+ul.menulist {
+	list-style: none;
+}
+
+
+ul.menulist>li>a>img {
+	margin: 15px auto;
+}
+
+img.panelhome {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 0 -32px;
+}
+
+img.panelconfip {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 32px 0;
+}
+
+img.panelconflist {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 0 0;
+}
+
+img.panelmeteo {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 0 -64px;
+}
+
+img.panelabout {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 32px -32px;
+}
 
 /* =====================================================================
 				Header					*/
