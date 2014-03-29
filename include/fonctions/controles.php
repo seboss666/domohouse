@@ -14,8 +14,17 @@ function accueil() {
   elseif (!$parsedJSON['ListeAppareils']) {
       header('Location: index.php?page=configListe');
   }
-
-  $devicesFinal = filterDevices($parsedJSON['ListeAppareils']);
+  
+  $liste = $parsedJSON['ListeAppareils'];
+  $device_count = count($liste);
+  
+  $liste_idx = array();
+  for($i=0;$i<$device_count;$i++) {
+    $liste_idx[$i] = $liste[$i]['idx'];
+  }
+  
+  
+  $devicesFinal = filterDevices($liste_idx);
   require('vues/accueil.php');
 
 }
@@ -53,7 +62,18 @@ function configurationListe() {
       $parsedJSON = json_decode($config, true);
   }
   $devicesFinal = getAllDevices();
+
   $liste = $parsedJSON['ListeAppareils'];
+  $device_count = count($liste);
+  $liste_idx = array();
+  $listeInputDefaut = "";
+  
+  for($i = 0; $i < $device_count; $i++) {
+    $liste_idx[$i] = $liste[$i]['idx'];
+    $listeInputDefaut .= "," . implode(":", $liste[$i]);
+  }
+  
+  $listeInputDefaut = substr($listeInputDefaut, 1);
   require('vues/configListe.php');
 
 }
@@ -63,9 +83,14 @@ function configurationSave($listeAppareils) {
     $parsedJSON = json_decode($config, true);
     $ListeId = explode(",", htmlentities($listeAppareils));
 
+    $i = 0;
     $parsedJSON['ListeAppareils'] = array();
-    foreach($ListeId as $idx) {
-      $parsedJSON['ListeAppareils'][] =  $idx;
+    
+    foreach($ListeId as $idx_type) {
+      $device = explode(":", htmlentities($idx_type));
+      $parsedJSON['ListeAppareils'][$i]['idx'] =  $device[0];
+      $parsedJSON['ListeAppareils'][$i]['type'] = $device[1];
+      $i++;
     }
 
     file_put_contents("include/configData.json", json_encode($parsedJSON));
