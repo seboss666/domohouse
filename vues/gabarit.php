@@ -41,7 +41,7 @@
 				revert: true
 			});	
 			$('#UnusedList').disableSelection();
-		});
+		})
 	</script>
 
 </head>

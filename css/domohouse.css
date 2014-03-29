@@ -9,10 +9,6 @@
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 
-
-
-/* Layout */
-
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -36,7 +32,9 @@ body {
   margin: 0 auto;
 }
 
-/* Header */
+
+/* =====================================================================
+				Header					*/
 
 header {
 	border-bottom: 1px solid white;
@@ -46,17 +44,20 @@ header {
 	align-items: center;
 }
 
+/* Icone gauche & droite */
 #home img, #config img {
 	height: 48px;
 	width: 48px;
 }
 
+/* Mise en forme de la date & heure */
 #date_heure {
 	flex: 1;
 	text-align: center;
 }
 
-/* Section */
+/* =====================================================================
+				Section 				*/
 
 section {
   text-align: center;
@@ -64,36 +65,25 @@ section {
 
 .column { margin-bottom: 1.5rem; }
 
-/* Images Appareils */
 
-.switch {
+/* =====================================================================
+			Affichage appareils				*/
+
+.icone {
 	display: block;
-	width: 96px;
-	height: 96px;
-	margin: 10px auto;
+	width: 90px;
+	height: 90px;
+	margin: 5px auto 0 auto;
 	text-align: center;
 	padding-bottom: 2px;
 }
 
-.switch2 {
-	display: block;
-	width: 128px;
-	height: 64px;
-	margin: 0 auto;
-	text-align: center;
-	padding-bottom: 2px;
-}
-
-.notrecognized {
-	background: url(../img/notrecognized.png) no-repeat;
-}
-
-/* Températures */
-
-.temp {
+.text {
 	font-size: 3rem;
 	padding-top: 1rem;	
 }
+
+/* Températures */
 
 .r0010 {
 	color: #0058b7;
@@ -120,6 +110,7 @@ section {
 }
 
 /* Météo */
+
 .sunshine {
 	background: url(../img/sunshine.png) no-repeat;
 }
@@ -128,14 +119,18 @@ section {
 	background: url(../img/cloudy.png) no-repeat;
 }
 
-/* CSS pour les fichiers de configuration */
 
+/* =====================================================================
+		CSS pour les fichiers de configuration			*/
+
+/* <ul> */
 #SortedList, #UnusedList { 
 	list-style-type: none;
 	margin: 5% 0;
 	padding: 0;
 }
 
+/* <li> */
 #SortedList li, #UnusedList li {
 	display: flex;
 	flex-direction: row;
@@ -152,33 +147,39 @@ section {
 	
 }
 
+/* Premier élément de chaque liste */
 #SortedList li:first-of-type, #UnusedList li:first-of-type {
 	border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-#SortedList .icone, #UnusedList .icone {
-}
-
-#SortedList .icone img, #UnusedList .icone img {
+/* Petite icone représentant le type de switch*/
+#SortedList img, #UnusedList img {
 	width: 48px;
 	height: 48px;
 }
 
+/* Nom de l'appareil */
 #SortedList .nom, #UnusedList .nom {
 	flex: 1;
 	padding: 0 5px;
 }
 
-#SortedList .temp, #UnusedList .temp {
+/* Texte affichée lorsque l'appareil est une sonde */
+#SortedList .text, #UnusedList .text {
 	font-size: 1rem;
 	padding-top: 0;
+	width: 48px;
+	height: 48px;
 }
 
+/* Bouton 'Enregistrer' */
 .sendbutton {
 	color: #666;
 }
 
-/* Media Queries */
+/* ====================================================================
+				Media Queries				*/
+
 
 @media screen and (min-width: 20rem) {
 	.column {
@@ -192,18 +193,20 @@ section {
 	.column.half { width: 50%; }
 }
 
+/* Augmentation de la taille globale du texte, et celle des icones */
 @media screen and (min-width: 40.5rem) {
 	html {
 		font-size: 112%;
 	}
 	
-	.switch {
+	.icone {
 		width: 128px;
 		height: 128px;
 		cursor: pointer;
 	}
 }
 
+/* Augmentation de la taille globale du texte*/
 @media screen and (min-width: 64rem) {
 	html {
 		font-size: 120%;

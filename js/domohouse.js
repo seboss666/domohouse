@@ -1,11 +1,3 @@
-function switchAction(Action, Data, Idx) {
-	document.location.href = "index.php?page=switch&action=" + Action + "&data=" + Data + "&idx=" + Idx;
-}
-
-function affSlider() {
-	$( "#dialog" ).dialog();
-}
-
 function addZero(val)
 {
 	if(val < 10)
