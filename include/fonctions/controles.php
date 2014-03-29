@@ -124,6 +124,13 @@ function weatherDetail($townid) {
   require('vues/weatherDetail.php');
 }
 
+function about() {
+  $titre = "A propos";
+  $refresh = false;
+  require('vues/about.php');
+}
+
+
 //Affichage des erreurs
 function afficherErreur($msgErreur)
 {

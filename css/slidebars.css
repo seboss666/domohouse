@@ -102,8 +102,9 @@ html.sb-static .sb-slidebar,
 	.sb-width-wide {
 		width: 45%;
 	}
+/*
 
-@media (max-width: 480px) { /* Slidebar width on extra small screens. */
+@media (max-width: 480px) { 
 	.sb-slidebar {
 		width: 70%;
 	}
@@ -117,7 +118,8 @@ html.sb-static .sb-slidebar,
 	}
 }
 
-@media (min-width: 481px) { /* Slidebar width on small screens. */
+
+@media (min-width: 481px) { 
 	.sb-slidebar {
 		width: 55%;
 	}
@@ -131,7 +133,7 @@ html.sb-static .sb-slidebar,
 	}
 }
 
-@media (min-width: 768px) { /* Slidebar width on small screens. */
+@media (min-width: 768px) { 
 	.sb-slidebar {
 		width: 40%;
 	}
@@ -145,7 +147,7 @@ html.sb-static .sb-slidebar,
 	}
 }
 
-@media (min-width: 992px) { /* Slidebar width on medium screens. */
+@media (min-width: 992px) { 
 	.sb-slidebar {
 		width: 30%;
 	}
@@ -159,7 +161,7 @@ html.sb-static .sb-slidebar,
 	}
 }
 
-@media (min-width: 1200px) { /* Slidebar width on large screens. */
+@media (min-width: 1200px) {
 	.sb-slidebar {
 		width: 20%;
 	}
@@ -172,6 +174,8 @@ html.sb-static .sb-slidebar,
 		width: 35%;
 	}
 }
+
+*/
 
 /* ---------------
  * 004 - Animation

@@ -35,8 +35,14 @@ body {
 /* =====================================================================
 				Panel					*/
 
+/* panel width */
+	.sb-slidebar {
+		width: 50px;
+	}
+
 ul.menulist {
 	list-style: none;
+	margin-left: -32px;
 }
 
 
@@ -83,12 +89,24 @@ header {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	padding-right: 3px;
+	padding-left: 3px;
 }
 
 /* Icone gauche & droite */
-#home img, #config img {
+#home img, #weather img {
 	height: 48px;
 	width: 48px;
+}
+
+.meteo_img {
+	float: left;
+}
+
+.meteo_txt {
+	line-height: 48px;
+	font-size: 32px;
+	font-weight: normal;
 }
 
 /* Mise en forme de la date & heure */
@@ -232,6 +250,8 @@ section {
 
 	.column.full { width: 100%; }
 	.column.half { width: 50%; }
+
+
 }
 
 /* Augmentation de la taille globale du texte, et celle des icones */

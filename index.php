@@ -15,6 +15,9 @@ try {
     if (isset($_GET['page'])) {
         $page = htmlentities($_GET['page']);
         switch ($page) {
+            case 'about':
+                about();
+                break;
             case 'accueil':
                 accueil();
                 break;

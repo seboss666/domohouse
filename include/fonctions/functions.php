@@ -135,5 +135,13 @@ function tempStatus($temperature) {
   return $status;
 }
 
+function weatherHeader($townid) {
+  $weather = getWeather($townid);
+  $currentWeather['img'] = "http://l.yimg.com/a/i/us/we/52/" . $weather['Current']['code'] . ".gif";
+  $currentWeather['temp'] = $weather['Current']['temp'];
+
+  return $currentWeather;
+}
+
 
 ?>
