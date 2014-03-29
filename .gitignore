@@ -1,0 +1,4 @@
+.directory
+.kateproject
+.kateproject.d
+include/configData.json
