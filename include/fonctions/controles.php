@@ -29,6 +29,13 @@ function accueil() {
 
 }
 
+function plan($id) {
+  $refresh = true;
+  $titre = "Plans";
+  $devicesFinal = planDevices($id);
+  require('vues/accueil.php');
+}
+
 function configurationMenu() {
   $titre = "Menu de configuration";
   $refresh = false;
@@ -108,6 +115,13 @@ function configurationSaveIp($IP,$Port) {
     file_put_contents("include/configData.json", json_encode($parsedJSON));
     header('Location: index.php');
 
+}
+
+function weatherDetail($townid) {
+  $titre = "Détails météo";
+  $refresh = false;
+  $weather = getWeather($townid);
+  require('vues/weatherDetail.php');
 }
 
 //Affichage des erreurs
