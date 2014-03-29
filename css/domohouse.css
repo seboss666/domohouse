@@ -76,11 +76,17 @@ section {
 	margin: 5px auto 0 auto;
 	text-align: center;
 	padding-bottom: 2px;
+	cursor: pointer;
 }
 
 .text {
+	display: block;
+	width: 90px;
+	height: 90px;
+	margin: 5px auto 0 auto;
+	text-align: center;
 	font-size: 3rem;
-	padding-top: 1rem;	
+	padding-top: 1rem;
 }
 
 /* Températures */
@@ -131,7 +137,7 @@ section {
 }
 
 /* <li> */
-#SortedList li, #UnusedList li {
+#SortedList li, #UnusedList li, .listePlaceholder {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -143,13 +149,17 @@ section {
 	border-bottom: 1px solid rgba(255,255,255,0.06);
 	border-right: 1px solid rgba(255,255,255,0.06);
 	border-left: 1px solid rgba(255,255,255,0.06);
-	cursor: move;
-	
+	cursor: move;	
 }
+
+/* En-tete de liste */
 
 /* Premier élément de chaque liste */
 #SortedList li:first-of-type, #UnusedList li:first-of-type {
 	border-top: 1px solid rgba(255,255,255,0.06);
+	justify-content: center;
+	font-weight: bold;
+	padding: 5px;
 }
 
 /* Petite icone représentant le type de switch*/
@@ -199,10 +209,9 @@ section {
 		font-size: 112%;
 	}
 	
-	.icone {
+	.icone, .text {
 		width: 128px;
 		height: 128px;
-		cursor: pointer;
 	}
 }
 

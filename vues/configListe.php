@@ -3,6 +3,7 @@
 		<div class="row clearfix">
 			<div class="column half">
 		    		<ul id="SortedList">
+					<li>Appareils à afficher</li>
 
 <?php
 	$devicesFinal = getAllDevices();
@@ -50,6 +51,7 @@
 			</div>
 			<div class="column half">
 				<ul id="UnusedList">
+					<li>Appareils inutilisés</li>
 				
 <?php
 	foreach ($devicesFinal as $device) {
