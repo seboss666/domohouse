@@ -84,29 +84,39 @@ img.panelabout {
 				Header					*/
 
 header {
-	border-bottom: 1px solid white;
+	background: url(../img/bg01.jpg) repeat scroll 0% 0% rgba(0,0,0,0.85);
+	width: 100%;
+	min-height: 65px;
+	position: fixed;
+	top: 0;
+	z-index: 9998;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
-	padding-right: 3px;
-	padding-left: 3px;
+	align-items: stretch;
+	padding: 3px;
+	border-bottom: 1px solid white;
 }
 
 /* Icone gauche & droite */
+#home, #weather {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
 #home img, #weather img {
 	height: 48px;
 	width: 48px;
 }
 
 .meteo_img {
-	float: left;
 }
 
 .meteo_txt {
-	line-height: 48px;
-	font-size: 32px;
+	font-size: 2rem;
 	font-weight: normal;
+	display: none;
 }
 
 /* Mise en forme de la date & heure */
@@ -119,7 +129,8 @@ header {
 				Section 				*/
 
 section {
-  text-align: center;
+	text-align: center;
+	padding-top : 60px;
 }
 
 .column { margin-bottom: 1.5rem; }
@@ -260,8 +271,6 @@ section {
 
 	.column.full { width: 100%; }
 	.column.half { width: 50%; }
-
-
 }
 
 /* Augmentation de la taille globale du texte, et celle des icones */
@@ -273,6 +282,10 @@ section {
 	.icone, .text {
 		width: 128px;
 		height: 128px;
+	}
+	
+	.meteo_txt {
+		display: inline;
 	}
 }
 
