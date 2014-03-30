@@ -53,15 +53,19 @@
 </head>
 
 <body>
-	<div>
-	<header>
+		
+	<header class="sb-slide">
 		<div id="home" class="sb-toggle-left"><img src="img/menu2.png"></div>
 		<div id="date_heure">
 			<div id="heure">Heure</div>
 			<div id="date">Date</div>
 		</div>
-		<div onclick="location.href='index.php?page=meteo&id=<?php global $Town; echo $Town; ?>'" id="weather"><?php $currentWeather = weatherHeader($Town); ?><img class="meteo_img" src="<?php echo $currentWeather['img']; ?>"><span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span></div>
+		<div onclick="location.href='index.php?page=meteo&id=<?php global $Town; echo $Town; ?>'" id="weather"><?php $currentWeather = weatherHeader($Town); ?>
+			<img class="meteo_img" src="<?php echo $currentWeather['img']; ?>">
+			<span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span>
+		</div>
 	</header>
+	<div id="sb-site">
 	<section>
 		<div class="container">
 <?php
@@ -72,7 +76,7 @@
 	</section>
 	</div>
 
-	<div class="sb-slidebar sb-left">
+	<div class="sb-slidebar sb-left sb-style-push">
 		<ul class="menulist">
 			<li><a href="index.php?page=accueil"><img class="panelhome" src="img/pixel.gif" alt="Accueil"></a></li>
 			<li><a href="index.php?page=configIp"><img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz"></a></li>
