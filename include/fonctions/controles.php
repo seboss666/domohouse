@@ -8,13 +8,6 @@ function accueil() {
   $config = file_get_contents("include/configData.json");
   $parsedJSON = json_decode($config, true);
 
-  if (!$parsedJSON['IP'] OR !$parsedJSON['Port']) {
-      header('Location: index.php?page=configIp');
-  }
-  elseif (!$parsedJSON['ListeAppareils']) {
-      header('Location: index.php?page=configListe');
-  }
-  
   $liste = $parsedJSON['ListeAppareils'];
   $device_count = count($liste);
   
@@ -46,11 +39,7 @@ function configurationIp() {
   $titre = "Configuration du serveur Domoticz";
   $refresh = false;
   $config = file_get_contents("include/configData.json");
-  if ($config === false) {
-    file_put_contents("include/configData.json", '{"IP":"127.0.0.1","Port":"8080"}');
-  }
-  else {
-      $parsedJSON = json_decode($config, true);
+  $parsedJSON = json_decode($config, true);
   }
   $IP = $parsedJSON['IP'];
   $Port = $parsedJSON['Port'];
@@ -61,12 +50,7 @@ function configurationTown() {
   $titre = "Configuration de la ville";
   $refresh = false;
   $config = file_get_contents("include/configData.json");
-  if ($config === false) {
-    file_put_contents("include/configData.json", '{"Town":"","IP":"127.0.0.1","Port":"8080"}');
-  }
-  else {
-      $parsedJSON = json_decode($config, true);
-  }
+  $parsedJSON = json_decode($config, true);
   $Town = $parsedJSON['Town'];
   require('vues/configTown.php');
 }
@@ -76,12 +60,7 @@ function configurationListe() {
   $titre = "Configuration des appareils";
   $refresh = false;
   $config = file_get_contents("include/configData.json");
-  if ($config === false) {
-    file_put_contents("include/configData.json", '{"ListeAppareils":[""]}');
-  }
-  else {
-      $parsedJSON = json_decode($config, true);
-  }
+  $parsedJSON = json_decode($config, true);
   $devicesFinal = getAllDevices();
 
   $liste = $parsedJSON['ListeAppareils'];
