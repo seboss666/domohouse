@@ -2,6 +2,7 @@
 
 		<div class="row clearfix">
 			<div class="column full">
+				<br>
 				<form method="POST" action="index.php?page=configSaveIp" id="triForm" name="triForm" onSubmit="return check();">
 					Adresse IP: <input type="text" name="IP" value="<?php echo $parsedJSON['IP']; ?>"><br>
 					Port : <input type="text" name="Port" value="<?php echo $parsedJSON['Port']; ?>"><br>
