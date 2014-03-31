@@ -11,14 +11,18 @@ Cette application est développée en PHP, donc il faut un serveur Web avec PHP 
 
 2. Utilisation
 ==============
-Pour l'instant une seule page est utilisée pour afficher une liste personnalisée de switches et capteurs (les autres appareils apparaissent, mais comme non supportés). Un menu permettant de configurer les paramètres de connexion ainsi que l'organisation des appareils est disponible. Le fichier 'include/configData.json' doit pouvoir être modifiable par le serveur (sous linux, un chmod a+w suffit).
+L'application dispose d'un menu pour configurer les différentes informations : IP/Port, Code de ville pour météo, liste des appareils. Le fichier 'include/configData.json' doit pouvoir être modifiable par le serveur (sous linux, un chmod a+w suffit). S'il n'existe pas à l'installation, le serveur web doit pouvoir écrire dans le dossier 'include' (auquel cas il vous envoie sur la configuration IP).
+
+Les informations météo sont fournies par Yahoo. Pour déterminer le code de ville, il faut se rendre sur http://fr.meteo.yahoo.com, et rechercher sa ville. Une fois la page de détail activée, le code se trouve à la fin de l'URL (qui est de la forme https://fr.meteo.yahoo.com/pays/region/ville-code/)
 
 
 3. Limitations (qu'on pourrait appeler TODO LIST)
 ================================================================
 -Les emplacements (plan dans le jargon du Json de Domoticz), qui permet un affichage par pièce, ne sont pas encore pris en charge. L'écriture est en cours.
--Le style avance, mais tous les types d'images sur les switches ne sont pas pris en charge, et ne le seront peut-être jamais. Malgré tout une image générique s'affiche dans ce cas, et donc le switch est manipulable.
 -Les dimmer ne sont pris en charge que comme des switches standards.
+-Les groupes/scènes ne sont pas encore implémentés.
+-Dans un esprit "responsive", les écrans "larges" (pc classiques, tablettes en mode paysage) disposeront de plus de prise en charge (plus d'appareils sur une même ligne).
+
 
 
 4. Interface
@@ -26,5 +30,4 @@ Pour l'instant une seule page est utilisée pour afficher une liste personnalis�
 L'interface utilise quelques éléments qui ne sont pas développés "maison" :
 -La police Open Sans Regular est incluse (http://www.fontsquirrel.com/fonts/open-sans);
 -Normalize.css (http://necolas.github.io/normalize.css/);
--Grid.css (http://www.adamkaplan.me/grid/), qui sera probablement supprimé au profit d'un sous-ensemble "utile".
--jQuery (https://jquery.com/), jQuery-UI (https://jqueryui.com/) et un plugin (http://touchpunch.furf.com/) pour la gestion du tactile sur la page de configuration. Probablement remis à contributions pour des développements futurs.
+-jQuery (https://jquery.com/), jQuery-UI (https://jqueryui.com/), un plugin (http://touchpunch.furf.com/) pour la gestion du tactile sur la page de configuration;, Slidebars (http://plugins.adchsm.me/slidebars/) pour le panel (dont le CSS est modifié pour ne pas interférer avec le reste de la configuration, media queries et réglages par défaut)
