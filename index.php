@@ -1,17 +1,18 @@
 <?php
 session_start();
 
+if (!file_exists('include/configData.json')) {
+    file_put_contents('include/configData.json', '{"Town":"","IP":"","Port":"","ListeAppareils":[{"idx":"","type":""}]}');
+    header('Location: index.php?page=configIp');
+}
+
+
 require('include/fonctions/controles.php');
 require('include/actions/switchActions.php');
 
  
 try {
     
-    if (!file_exists('include/configData.json')) {
-        file_put_contents('include/configData.json', '{"Townid":"","IP":"","Port":"","ListeAppareils":[{"idx":"","type":""}]}');
-        header('Location: index.php?page=configIp');
-    }
-
     if (isset($_GET['page'])) {
         $page = htmlentities($_GET['page']);
         switch ($page) {

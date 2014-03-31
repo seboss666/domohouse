@@ -45,6 +45,7 @@ function getWeather($townid) {
 	$xml = simplexml_load_string($result);
 	 
 	$xml->registerXPathNamespace('yweather', 'http://xml.weather.yahoo.com/ns/rss/1.0');
+	
 	$location = $xml->channel->xpath('yweather:location');
 	 
 	if(!empty($location)) {
@@ -54,11 +55,13 @@ function getWeather($townid) {
 			$current = $current[0];
 		}
 		$weatherDetail = array('Location' => $location, 'Current' => $current, 'Forecast' => $forecast);
-		return $weatherDetail;
 	}
 	else {
-	throw new Exception('Aucun résultat, vérifiez le code de la ville');
+		$weatherDetail = array('Erreur' => 'Aucun résultat');
 	}
+	return $weatherDetail;
+
+
 }
 
 ?>

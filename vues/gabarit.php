@@ -60,14 +60,27 @@
 			<div id="heure">Heure</div>
 			<div id="date">Date</div>
 		</div>
-		<div onclick="location.href='index.php?page=meteo&id=<?php global $Town; echo $Town; ?>'" id="weather"><?php $currentWeather = weatherHeader($Town); ?>
+<?php
+	global $Town;
+
+	if ($Town !== "" ) {
+		$currentWeather = weatherHeader($Town);
+		if (!isset($currentWeather['Erreur'])) {
+		?>
+		<div onclick="location.href='index.php?page=meteo&id=<?php echo $Town; ?>'" id="weather">
 			<img class="meteo_img" src="<?php echo $currentWeather['img']; ?>">
 			<span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span>
 		</div>
+<?php 
+		}
+	}
+?>
 	</header>
 	<div id="sb-site">
 	<section>
 		<div class="container">
+
+
 <?php
 	echo $contenu;
 

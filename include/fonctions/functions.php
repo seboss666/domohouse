@@ -136,10 +136,15 @@ function tempStatus($temperature) {
 }
 
 function weatherHeader($townid) {
+  $currentWeather = array();
   $weather = getWeather($townid);
-  $currentWeather['img'] = "http://l.yimg.com/a/i/us/we/52/" . $weather['Current']['code'] . ".gif";
-  $currentWeather['temp'] = $weather['Current']['temp'];
-
+  if (!isset($weather['Erreur'])) {
+    $currentWeather['img'] = "http://l.yimg.com/a/i/us/we/52/" . $weather['Current']['code'] . ".gif";
+    $currentWeather['temp'] = $weather['Current']['temp'];
+  }
+  else {
+    $currentWeather ['Erreur'] = $weather['Erreur'];
+  }
   return $currentWeather;
 }
 
