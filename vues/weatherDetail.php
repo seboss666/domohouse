@@ -14,7 +14,7 @@
 		<br/>
 		<img src="http://l.yimg.com/a/i/us/we/52/<?php echo $weather['Current']['code']; ?>.gif" style="width: 52px; height: 52px; vertical-align: middle;"/>&nbsp;<?php echo $weathercodes[(string)$weather['Current']['code']]; ?>
 	</p>
-	<h2>Forecast</h2>
+	<h2>Prévisions</h2>
 
 <?php 
 		foreach($weather['Forecast'] as $futur) {

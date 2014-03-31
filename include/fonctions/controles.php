@@ -16,7 +16,6 @@ function accueil() {
     $liste_idx[$i] = $liste[$i]['idx'];
   }
   
-  
   $devicesFinal = filterDevices($liste_idx);
   require('vues/accueil.php');
 
@@ -40,7 +39,6 @@ function configurationIp() {
   $refresh = false;
   $config = file_get_contents("include/configData.json");
   $parsedJSON = json_decode($config, true);
-  }
   $IP = $parsedJSON['IP'];
   $Port = $parsedJSON['Port'];
   require('vues/configIp.php');
