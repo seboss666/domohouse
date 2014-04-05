@@ -1,67 +1,108 @@
 <?php ob_start(); ?>
 
 		<div class="row clearfix">
+			<div class="column half">
+		    		<ul id="SortedList">
+					<li>Appareils à afficher</li>
 
-		    <div class="column full">
-			<table>
-				<tbody id="SortedList">
-					<tr class="sort-disabled"><th colspan="2">Appareils à afficher</th></tr>
 <?php
-
-	foreach($liste as $idx) {
+	$devicesFinal = getAllDevices();
+	$i = 0;
+	foreach($liste_idx as $idx) {
 		foreach ($devicesFinal as $device) {
 			if($device['Type'] != 'Scene') {
 				if ($idx == $device['idx']) {
+					$deviceInfo = deviceType($device);
 ?>
 
-					<tr id="<?php echo $device['idx']; ?>">
-						<td><?php echo $device['Name']; ?></td>
-						<td><?php echo $device['Type']; ?></td>
-					</tr>
+					<li id="<?php echo $device['idx'] . ":" . $liste[$i]['type']; ?>">
+					
+<?php
+					if ($deviceInfo[$liste[$i]['type']]['format'] == 'img') {
+?>
 
+						<div><img src="img/<?php echo $deviceInfo[$liste[$i]['type']]['etat']; ?>.png"></img></div>
+
+<?php
+					}
+					elseif ($deviceInfo[$liste[$i]['type']]['format'] == 'text') {
+?>
+
+						<div class="<?php echo $deviceInfo[$liste[$i]['type']]['format'] . " " . $deviceInfo[$liste[$i]['type']]['etat']; ?>">
+							<?php echo $deviceInfo[$liste[$i]['type']]['value']; ?>
+						</div>
+
+<?php
+					}
+?>
+
+					<div class="nom"><p><?php echo $device['Name']; ?></p></div>
+					</li>
+					
 <?php
 				}
 			}	
 		}
+		$i++;
 	}
-
 ?>
-				</tbody>
-			</table>
-			<br />
-			<table>
-				<tbody id="UnusedList">
-					<tr class="sort-disabled"><th colspan="2">Appareils inutilisés</th></tr>
-<?php		
+
+				</ul>
+			</div>
+			<div class="column half">
+				<ul id="UnusedList">
+					<li>Appareils inutilisés</li>
+				
+<?php
 	foreach ($devicesFinal as $device) {
 		if($device['Type'] != 'Scene') {
-			$IsUsed = 0;
-			foreach($liste as $idx) {
-				if ($idx == $device['idx']) {
-					$IsUsed = 1;
+			$deviceInfo = deviceType($device);
+			foreach($deviceInfo as $deviceData) {
+				$IsUsed = 0;
+				foreach($liste as $idx_type) {
+					if (($idx_type['idx'] == $device['idx']) and ($idx_type['type'] == $deviceData['type'])) {
+						$IsUsed = 1;
+					}
 				}
-			}
 			
-			if($IsUsed != 1) {
+				if($IsUsed != 1) {
 ?>
 
-					<tr id="<?php echo $device['idx']; ?>">
-						<td><?php echo $device['Name']; ?></td>
-						<td><?php echo $device['Type']; ?></td>
-					</tr>
+					<li id="<?php echo $device['idx'] . ":" . $deviceData['type']; ?>">
+					
+<?php
+					if ($deviceData['format'] == 'img') {
+?>
+						
+						<div><img src="img/<?php echo $deviceData['etat']; ?>.png"></img></div>
 
 <?php
+					}
+					elseif ($deviceData['format'] == 'text') {
+?>
+
+						<div class="<?php echo $deviceData['format'] . " " . $deviceData['etat']; ?>"><?php echo $deviceData['value']; ?></div>
+
+<?php
+					}
+?>
+
+						<div class="nom"><p><?php echo $device['Name']; ?></p></div>
+					</li>
+<?php
+				}
 			}
 		}
-	}
+	}	
 ?>
-				</tbody>
-			</table>
-			<br>
-			<form method="POST" action="index.php?page=configSave" id="testForm" name="testForm">
-				<input type="hidden" id="ListeId" name="id" value="<?php echo implode(",", $liste); ?>">
-				<input class="sendbutton" type="submit" value="Enregistrer">
-			</form>
+				</ul>
+			</div>
+			<div class="column full">
+				<form method="POST" action="index.php?page=configSave" id="triForm" name="triForm">
+					<input type="hidden" id="ListeId" name="id" value="<?php echo $listeInputDefaut; ?>">
+					<input class="sendbutton" type="submit" value="Enregistrer">
+				</form>
+			</div>
 		    </div>
 		</div>
 

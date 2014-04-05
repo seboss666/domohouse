@@ -12,8 +12,8 @@ function filterDevices($idxList) {
       }
     }
   }
-
-  return $finalDev;
+  
+return $finalDev;
 }
 
 function planDevices($idplan) {
@@ -22,41 +22,38 @@ function planDevices($idplan) {
 }
 
 function deviceType($device) {
+  $deviceInfo = array();
   switch ($device['Type']) {
     case 'Lighting 1':
     case 'Lighting 2':
     case 'Lighting 6':
-      switch ($device['SwitchType']) {
-        case 'On/Off':
-          $bloc = '<div onclick="switchAction(\'Toggle\', \'' . $device['Status'] . '\', \'' . $device['idx'] . '\')" class="column half"><span class="switch ' . switchStatus($device) . '"></span>' . $device['Name'] . '</div>
-          ';
-          break;
-        case 'Dimmer':
-          if($device['Status'] == 'Off') {
-            $bloc = '<div onclick="switchAction(\'Toggle\', \'' . $device['Status'] . '\', \'' . $device['idx'] . '\')" class="column half"><span class="switch ' . switchStatus($device) . '"></span>' . $device['Name'] . '</div>
-            ';
-          }
-          else {
-            $bloc = '<div onclick="switchAction(\'Toggle\', \'On\', \'' . $device['idx'] . '\')" class="column half"><span class="switch ' . switchStatus($device) . '"></span>' . $device['Name'] . '</div>
-            ';
-          }
-        break;
-      }
-      break;
+	$deviceInfo['switch']['format'] = 'img';
+	$deviceInfo['switch']['type'] = 'switch';
+	$deviceInfo['switch']['etat'] = switchStatus($device);
+	$deviceInfo['switch']['action'] = 'Toggle';
+	break;
     case 'temperature':
     case 'Temp':
-        $bloc = '<div class="column half"><div class="switch temp ' . tempStatus($device['Temp']) . '">' . number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '') . '°' .'</div>' . $device['Name'] . '</div>
-        ';
-      break;
+	$deviceInfo['temp']['format'] = 'text';
+	$deviceInfo['temp']['type'] = 'temp';
+	$deviceInfo['temp']['value'] = number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '') . "°";
+	$deviceInfo['temp']['etat'] = tempStatus($device['Temp']);
+	break;
     case 'Temp + Humidity':
-        $bloc = '<div class="column half"><div class="switch2 temp ' . tempStatus($device['Temp']) . '">' . number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '')  . '°' .'</div><div class="switch2">' . $device['Humidity'] . '%</div>' . $device['Name'] . '</div>
-        ';
-      break;
+	$deviceInfo['temp']['format'] = 'text';
+	$deviceInfo['temp']['type'] = 'temp';
+	$deviceInfo['temp']['value'] = number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '') . "°";
+	$deviceInfo['temp']['etat'] = tempStatus($device['Temp']);
+	$deviceInfo['humidity']['format'] = 'text';
+	$deviceInfo['humidity']['type'] = 'humidity';
+	$deviceInfo['humidity']['value'] = $device['Humidity'] . "%";
+	break;
     default:
-        $bloc = '<div class="column half"><div class="switch notrecognized"></div>' . $device['Name'] . '</div>
-        ';
+	$deviceInfo['unknown']['format'] = 'img';
+	$deviceInfo['unknown']['type'] = 'unknown';
+	$deviceInfo['unknown']['etat'] = 'notrecognized';
   }
-  return $bloc;
+  return $deviceInfo;
 }
 
 //Fonctions pour les switches
@@ -104,7 +101,7 @@ function switchImg($image) {
 function switchStatus($device) {
   if ($device['Status'] == "On") {
     $status = switchImg($device['Image']) . "on";
-    }
+  }
   else {
     $status = switchImg($device['Image']) . "off";
   }
@@ -137,5 +134,19 @@ function tempStatus($temperature) {
 
   return $status;
 }
+
+function weatherHeader($townid) {
+  $currentWeather = array();
+  $weather = getWeather($townid);
+  if (!isset($weather['Erreur'])) {
+    $currentWeather['img'] = "http://l.yimg.com/a/i/us/we/52/" . $weather['Current']['code'] . ".gif";
+    $currentWeather['temp'] = $weather['Current']['temp'];
+  }
+  else {
+    $currentWeather ['Erreur'] = $weather['Erreur'];
+  }
+  return $currentWeather;
+}
+
 
 ?>

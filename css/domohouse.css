@@ -1,143 +1,165 @@
-body {
-	background: rgba(0,0,0,0.85);
-	color: rgb(200,200,200);
+/* Clearfix by Nicolas Gallagher */
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
 }
 
-.headimg {
-	display: inline;
-	margin: 0 auto;
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font: 100%/1.5 "Open Sans", sans-serif;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+	background: url(../img/bg01.jpg) repeat scroll 0% 0% rgba(0,0,0,0.85);
+	color: rgb(200,200,200);
+	font-size: 100%;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+/* =====================================================================
+				Panel					*/
+
+/* panel width */
+	.sb-slidebar {
+		width: 50px;
+	}
+
+ul.menulist {
+	list-style: none;
+	margin-left: -32px;
+}
+
+
+ul.menulist>li>a>img {
+	margin: 15px auto;
+}
+
+img.panelhome {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 0 -32px;
+}
+
+img.panelconfip {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 32px 0;
+}
+
+img.panelconflist {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 0 0;
+}
+
+img.panelmeteo {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 0 -64px;
+}
+
+img.panelabout {
+	width: 32px;
+	height: 32px;
+	background: url(../img/menusprite.png) 32px -32px;
+}
+
+/* =====================================================================
+				Header					*/
+
+header {
+	background: url(../img/bg01.jpg) repeat scroll 0% 0% rgba(0,0,0,0.85);
+	width: 100%;
+	min-height: 65px;
+	position: fixed;
+	top: 0;
+	z-index: 9998;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
+	padding: 3px;
+	border-bottom: 1px solid white;
+}
+
+/* Icone gauche & droite */
+#home, #weather {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#home img, #weather img {
 	height: 48px;
 	width: 48px;
-	margin-top: 5px;
 }
 
-.switch {
+.meteo_img {
+}
+
+.meteo_txt {
+	font-size: 2rem;
+	font-weight: normal;
+	display: none;
+}
+
+/* Mise en forme de la date & heure */
+#date_heure {
+	flex: 1;
+	text-align: center;
+}
+
+/* =====================================================================
+				Section 				*/
+
+section {
+	text-align: center;
+	padding-top : 60px;
+}
+
+.column { margin-bottom: 1.5rem; }
+
+
+/* =====================================================================
+			Affichage appareils				*/
+
+.icone {
 	display: block;
-	width: 128px;
-	height: 128px;
-	margin: 0 auto;
+	width: 90px;
+	height: 90px;
+	margin: 5px auto 0 auto;
 	text-align: center;
 	padding-bottom: 2px;
+	cursor: pointer;
 }
 
-.switch2 {
+.text {
 	display: block;
-	width: 128px;
-	height: 64px;
-	margin: 0 auto;
+	width: 90px;
+	height: 90px;
+	margin: 5px auto 0 auto;
 	text-align: center;
-	padding-bottom: 2px;
-}
-
-.notrecognized {
-	background: url(../img/notrecognized.png) no-repeat;
-}
-
-/*Ampoules */
-.lightoff {
-	background: url(../img/light0.png) no-repeat; 
-}
-
-.lighton {
-	background: url(../img/light100.png) no-repeat;
-}
-
-/*Generique */
-.switchon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.switchoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Ventilos */
-.fanon {
-	background: url(../img/fanon.png) no-repeat;	
-}
-
-.fanoff {
-	background: url(../img/fanoff.png) no-repeat;
-}
-
-/*TV */
-.tvon {
-	background: url(../img/tvon.png) no-repeat;	
-}
-
-.tvoff {
-	background: url(../img/tvoff.png) no-repeat;
-}
-
-/*Prise murale */
-.wallon {
-	background: url(../img/wallon.png) no-repeat;	
-}
-
-.walloff {
-	background: url(../img/walloff.png) no-repeat;
-}
-
-/*hauts-parleurs */
-.speakon {
-	background: url(../img/speakon.png) no-repeat;	
-}
-
-.speakoff {
-	background: url(../img/speakoff.png) no-repeat;
-}
-
-/*HDD */
-.hddon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.hddoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Imprimante */
-.printeron {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.printeroff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Ampli */
-.amplion {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.amplioff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Ordinateur */
-.computon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.computoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Cheminée */
-.fireon {
-	background: url(../img/switchon.png) no-repeat;	
-}
-
-.fireoff {
-	background: url(../img/switchoff.png) no-repeat;
-}
-
-/*Températures*/
-
-.temp {
 	font-size: 3rem;
-	padding-top: 1rem;	
+	padding-top: 1rem;
 }
+
+/* Températures */
 
 .r0010 {
 	color: #0058b7;
@@ -163,7 +185,8 @@ body {
 	color: #d12c2c;
 }
 
-/*Météo*/
+/* Météo */
+
 .sunshine {
 	background: url(../img/sunshine.png) no-repeat;
 }
@@ -172,37 +195,103 @@ body {
 	background: url(../img/cloudy.png) no-repeat;
 }
 
-/*Provisoire : CSS pour les fichiers de configuration*/
-table,tbody,th,tr,td {
-	border: 1px solid rgba(255,255,255,0.06);
-	border-collapse: collapse;
+
+/* =====================================================================
+		CSS pour les fichiers de configuration			*/
+
+/* <ul> */
+#SortedList, #UnusedList { 
+	list-style-type: none;
+	margin: 5% 0;
+	padding: 0;
+}
+
+/* <li> */
+#SortedList li, #UnusedList li, .listePlaceholder {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 5px;
 	background: rgba(10,10,10,0.3);
-	text-align: center;
+	border-top: none;
+	border-bottom: 1px solid rgba(255,255,255,0.06);
+	border-right: 1px solid rgba(255,255,255,0.06);
+	border-left: 1px solid rgba(255,255,255,0.06);
+	cursor: move;	
+}
+
+/* En-tete de liste */
+
+/* Premier élément de chaque liste */
+#SortedList li:first-of-type, #UnusedList li:first-of-type {
+	border-top: 1px solid rgba(255,255,255,0.06);
+	justify-content: center;
+	font-weight: bold;
 	padding: 5px;
-	color: #777;
 }
 
-table {
-	margin-left:auto;
-	margin-right:auto;
+/* Petite icone représentant le type de switch*/
+#SortedList img, #UnusedList img {
+	width: 48px;
+	height: 48px;
 }
 
-tr {
-	width: 100px;
-	height: 15px;
+/* Nom de l'appareil */
+#SortedList .nom, #UnusedList .nom {
+	flex: 1;
+	padding: 0 5px;
 }
 
-.sort-disabled {
-	border: none;
-	height: 1px;
+/* Texte affichée lorsque l'appareil est une sonde */
+#SortedList .text, #UnusedList .text {
+	font-size: 1rem;
+	padding-top: 0;
+	width: 48px;
+	height: 48px;
 }
 
+/* Bouton 'Enregistrer' */
 .sendbutton {
 	color: #666;
 }
 
-.listePlaceholder { 
-	width: 100px;
-	height: 15px;
-	border: 1px solid white;
+/* ====================================================================
+				Media Queries				*/
+
+
+@media screen and (min-width: 20rem) {
+	.column {
+		float: left;
+		margin: 0;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	.column.full { width: 100%; }
+	.column.half { width: 50%; }
+}
+
+/* Augmentation de la taille globale du texte, et celle des icones */
+@media screen and (min-width: 40.5rem) {
+	html {
+		font-size: 112%;
+	}
+	
+	.icone, .text {
+		width: 128px;
+		height: 128px;
+	}
+	
+	.meteo_txt {
+		display: inline;
+	}
+}
+
+/* Augmentation de la taille globale du texte*/
+@media screen and (min-width: 64rem) {
+	html {
+		font-size: 120%;
+	}
 }

@@ -2,16 +2,16 @@
 <html lang="fr">
 <head>
 
-<?php if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
-' ; } ?>
+<?php /*if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
+' ; }*/ ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="Viewport" content="width=device-width, initial-scale=1">
 
 	<title>DomoHouse - <?php echo $titre; ?></title>
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="css/grid.css">
 	<link rel="stylesheet" type="text/css" href="css/police.css">
+	<link rel="stylesheet" type="text/css" href="css/slidebars.css">
 	<link rel="stylesheet" type="text/css" href="css/domohouse.css">
 
 	<script type="text/javascript" src="js/domohouse.js"></script> 
@@ -22,45 +22,94 @@
 		$(document).ready(function(){
 			$('#SortedList').sortable( {
 				connectWith: "#UnusedList",
-				forcePlaceholderSize: true,
-				cursor: "move",
 				scroll: false,
-				items: "tr:not(.sort-disabled)",
+				revert: true,
+				items: "li:not(li:first-of-type)",
+				forcePlaceholderSize: true,
 				placeholder: "listePlaceholder",
 				update: function () {
 					var data = $('#SortedList').sortable('toArray');
-					document.testForm.ListeId.value = data;
+					document.triForm.ListeId.value = data;
+				},
+				receive: function(event, ui) {
+					if ($('#SortedList').children('li').length > 7 ) {
+						$('#UnusedList').sortable('cancel');
+					}
 				}
 			});
+			$('#SortedList').disableSelection();
 			$('#UnusedList').sortable( {
 				connectWith: "#SortedList",
+				scroll: false,
+				revert: true,
+				items: "li:not(li:first-of-type)",
 				forcePlaceholderSize: true,
-				items: "tr:not(.sort-disabled)",
 				placeholder: "listePlaceholder",
-				cursor: "move",
-				scroll: false
 			});	
-		});
-
+			$('#UnusedList').disableSelection();
+		})
 	</script>
 
 </head>
 
 <body>
-	<header>
-		<div class="container">
-			<div onclick="document.location.href='index.php'" class="column third headtxt"><img class="headimg" src="img/home-small.png"></div>
-			<div class="column third headtxt"><?php echo $titre; ?></div>
-			<div onclick="document.location.href='index.php?page=configMenu'" class="column third headtxt"><img class="headimg" src="img/cog-small.png"></div>
+		
+	<header class="sb-slide">
+		<div id="home" class="sb-toggle-left"><img src="img/menu2.png"></div>
+		<div id="date_heure">
+			<div id="heure">Heure</div>
+			<div id="date">Date</div>
 		</div>
-	</header>	
+<?php
+	global $Town;
+
+	if ($Town !== "" ) {
+		$currentWeather = weatherHeader($Town);
+		if (!isset($currentWeather['Erreur'])) {
+		?>
+		<div onclick="location.href='index.php?page=meteo&id=<?php echo $Town; ?>'" id="weather">
+			<img class="meteo_img" src="<?php echo $currentWeather['img']; ?>">
+			<span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span>
+		</div>
+<?php 
+		}
+	}
+?>
+	</header>
+	<div id="sb-site">
 	<section>
 		<div class="container">
+
+
 <?php
 	echo $contenu;
 
 ?>
 		</div>
 	</section>
+	</div>
+
+	<div class="sb-slidebar sb-left sb-style-push">
+		<ul class="menulist">
+			<li><a href="index.php?page=accueil"><img class="panelhome" src="img/pixel.gif" alt="Accueil"></a></li>
+			<li><a href="index.php?page=configIp"><img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz"></a></li>
+			<li><a href="index.php?page=configListe"><img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils"></a></li>
+			<li><a href="index.php?page=configTown"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"></a></li>
+			<li><a href="index.php?page=about"><img class="panelabout" src="img/pixel.gif" alt="À propos"></a></li>
+		</ul>
+	</div>
+	<!-- Slidebars -->
+	<script src="js/slidebars.js"></script>
+	<script>
+		(function($) {
+			$(document).ready(function() {
+				$.slidebars();
+			});
+		}) (jQuery);
+	</script>
+
+	<script type="text/javascript">
+		window.onload = function() { heure('heure'); date('date'); };
+	</script>
 </body>
 </html>

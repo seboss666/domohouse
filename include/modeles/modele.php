@@ -2,6 +2,7 @@
 
 $config = file_get_contents("include/configData.json");
 $parsedJSON = json_decode($config, true);
+$Town = $parsedJSON['Town'];
 $IP = $parsedJSON['IP'];
 $Port = $parsedJSON['Port'];
 
@@ -36,6 +37,31 @@ function getPlan($id) {
 		throw new Exception('Plan inexistant ou vide');
 		
 	}
+}
+
+function getWeather($townid) {
+
+	$result = file_get_contents('http://weather.yahooapis.com/forecastrss?w=' . $townid . '&u=c');
+	$xml = simplexml_load_string($result);
+	 
+	$xml->registerXPathNamespace('yweather', 'http://xml.weather.yahoo.com/ns/rss/1.0');
+	
+	$location = $xml->channel->xpath('yweather:location');
+	 
+	if(!empty($location)) {
+		foreach($xml->channel->item as $item){
+			$current = $item->xpath('yweather:condition');
+			$forecast = $item->xpath('yweather:forecast');
+			$current = $current[0];
+		}
+		$weatherDetail = array('Location' => $location, 'Current' => $current, 'Forecast' => $forecast);
+	}
+	else {
+		$weatherDetail = array('Erreur' => 'Aucun résultat');
+	}
+	return $weatherDetail;
+
+
 }
 
 ?>
