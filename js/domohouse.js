@@ -21,7 +21,11 @@ function date(id)
 	jour = date.getDay();
 	jours = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
 
-	var resultat = jours[jour] + ' ' + j + ' ' + mois[moi] + ' ' + annee;
+	if (j == 1) {
+		j = j + "er";
+	}
+	
+	var resultat = jours[jour] + ' ' + j + ' ' + mois[moi];
 	document.getElementById(id).innerHTML = resultat;
 	setTimeout('date("'+id+'");','1000');
 	return true;

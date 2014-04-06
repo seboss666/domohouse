@@ -1,9 +1,10 @@
 <!doctype html>
+
 <html lang="fr">
 <head>
 
-<?php if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
-' ; } ?>
+<?php /*if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
+' ; }*/ ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="Viewport" content="width=device-width, initial-scale=1">
 
@@ -53,10 +54,9 @@
 </head>
 
 <body>
-		
 	<header>
 		<div id="home" class="sb-toggle-left"><img src="img/menu2.png"></div>
-		<div id="date_heure">
+		<div id="date_heure" onclick="location.href='index.php?page=ephemeride'">
 			<div id="heure">Heure</div>
 			<div id="date">Date</div>
 		</div>
@@ -88,18 +88,76 @@
 		</div>
 	</section>
 	</div>
-
-	<div class="sb-slidebar sb-left sb-style-overlay">
+	<div class="sb-slidebar sb-left sb-style-overlay sb-static">
 		<ul class="menulist">
-			<li><a href="index.php?page=accueil"><img class="panelhome" src="img/pixel.gif" alt="Accueil"><span>Accueil</span></a></li>
-			<li><a href="#" class="toggle-submenu"><img class="panelconfip" src="img/pixel.gif" alt="Configuration"><span>Configuration</span></a>
+			<li>
+				<a href="index.php?page=accueil">
+					<img class="panelhome" src="img/pixel.gif" alt="Accueil">
+					<span>Accueil</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="toggle-submenu">
+					<img class="panelconfip" src="img/pixel.gif" alt="Configuration">
+					<span>Configuration</span>
+				</a>
 				<ul class="submenu">
-					<li><a href="index.php?page=configIp"><img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz"><span>Domoticz</span></a></li>
-					<li><a href="index.php?page=configListe"><img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils"><span>Affichage</span></a></li>
-					<li><a href="index.php?page=configTown"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"><span>Ville</span></a></li>
+					<li>
+						<a href="index.php?page=configIp">
+							<img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz">
+							<span>Domoticz</span>
+						</a>
+					</li>
+					<li>
+						<a href="index.php?page=configListe">
+							<img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils">
+							<span>Affichage</span>
+						</a>
+					</li>
+					<li>
+						<a href="index.php?page=configTown">
+							<img class="panelmeteo" src="img/pixel.gif" alt="Configuration meteo">
+							<span>M&eacute;t&eacute;o</span>
+						</a>
+					</li>
 				</ul>
-			<li><a href="index.php?page=meteo&id=<?php echo $Town; ?>"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"><span>M&eacute;t&eacute;o</span></a></li>
-			<li><a href="index.php?page=about"><img class="panelabout" src="img/pixel.gif" alt="À propos"><span>A propos</span></a></li>
+			</li>
+			<li>
+				<a href="#" class ="toggle-submenu">
+					<img class="panelconflist" src="img/pixel.gif" alt="Emplacements">
+					<span>Emplacements</span>
+				</a>
+				<ul class="submenu">
+
+<?php
+	$listePlans = getAllPlans();
+	foreach( $listePlans as $plan) {
+?>
+
+					<li>
+						<a href="index.php?page=plan&id=<?php echo $plan['idx'];?>">
+							<img class="panelconflist" src="img/pixel.gif" alt="<?php echo $plan['Name'];?>">
+							<span><?php echo $plan['Name'];?></span>
+						</a>
+					</li>
+					
+<?php
+	}
+?>
+				</ul>
+			</li>
+			<li>
+				<a href="index.php?page=meteo&id=<?php echo $Town; ?>">
+					<img class="panelmeteo" src="img/pixel.gif" alt="Météo locale">
+					<span>M&eacute;t&eacute;o</span>
+				</a>
+			</li>
+			<li>
+				<a href="index.php?page=about">
+					<img class="panelabout" src="img/pixel.gif" alt="À propos">
+					<span>A propos</span>
+				</a>
+			</li>
 		</ul>
 	</div>
 	<!-- Slidebars -->

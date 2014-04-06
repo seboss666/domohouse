@@ -32,8 +32,7 @@ body {
   margin: 0 auto;
 }
 
-/* =====================================================================
- *										Panel							*/
+/* Panel */
 
 /* Sidebar width */
 .sb-slidebar {
@@ -89,8 +88,11 @@ ul.menulist span {
 	text-align: left;
 }
 
-/* =====================================================================
- * 									Submenu								*/
+ul.menulist > li > a > img {
+/*	margin: 15px auto;*/
+}
+
+/* Submenu */
 
 .submenu {
 	display: none;
@@ -100,8 +102,7 @@ ul.menulist span {
 	background-color: #666666;
 }
 
-/* =====================================================================
- * 									Icones								*/
+/*  Icones */
 
 img.panelhome {
 	width: 32px;
@@ -133,8 +134,7 @@ img.panelabout {
 	background: url(../img/menusprite.png) 32px -32px;
 }
 
-/* =====================================================================
- *										Header							*/
+/* Header */
 
 header {
 	z-index: 9999;
@@ -183,18 +183,36 @@ header {
 
 /* Mise en forme de la date & heure */
 #date_heure {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1;
-	flex: 1;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+}
+
+#heure {
 	text-align: center;
 }
 
-/* =====================================================================
- *									Section 							*/
-
-#sb-site {
-	height: auto; /* Initially set here but accurate height is set by slidebars.js */
+#jour_txt, #mois_txt {
+	font-size: 3rem;
+	text-transform: uppercase;
 }
+
+#jour_num {
+	font-size: 10rem;
+}
+
+#semaine {
+	text-align: left;
+}
+
+#sunriseset {
+	text-align: left;
+}
+
+/* Section */
 
 section {
 	text-align: center;
@@ -210,10 +228,9 @@ section {
 .column.full { width: 100%; }
 .column.half { width: 50%; }
 
-/* =====================================================================
- *								Affichage appareils						*/
+/* Affichage appareils */
 
-.icone, .text {
+.switches, .unknown, .sensors, .group, .scene {
 	display: block;
 	width: 90px;
 	height: 90px;
@@ -222,13 +239,12 @@ section {
 	padding-bottom: 2px;
 }
 
-.text {
+.sensors {
 	font-size: 3rem;
 	padding-top: 1rem;
 }
 
-/* =====================================================================
- *								Températures 							*/
+/* Températures */
 
 .r0010 {
 	color: #0058b7;
@@ -254,8 +270,7 @@ section {
 	color: #d12c2c;
 }
 
-/* ===================================================================== 
- *									Météo					 			*/
+/* Météo */
 
 .sunshine {
 	background: url(../img/sunshine.png) no-repeat;
@@ -269,8 +284,7 @@ section {
 	display: inline-block;
 }
 
-/* =====================================================================
- *						CSS pour les fichiers de configuration			*/
+/* CSS pour les fichiers de configuration */
 
 /* <ul> */
 #SortedList, #UnusedList { 
@@ -368,8 +382,7 @@ p.configForm>input {
 	color: rgb(92,92,92);
 }
 
-/* ====================================================================
-				Media Queries				*/
+/* Media Queries */
 
 /* Augmentation de la taille globale du texte, et celle des icones */
 @media screen and (min-width: 40.5rem) {
@@ -377,16 +390,12 @@ p.configForm>input {
 		font-size: 112%;
 	}
 	
-	.icone, .text {
+	.switches, .unknown, .sensors, .group, .scene {
 		width: 128px;
 		height: 128px;
 	}
 	
-	.icone {
-		cursor: pointer;
-	}
-	
-	#weather, #date_heure, #home {
+	.switches, .group, .scene {
 		cursor: pointer;
 	}
 	
@@ -396,7 +405,11 @@ p.configForm>input {
 
 	div>form {
 	width: 30%;
-}
+	}
+	
+	#weather, #date_heure, #home {
+		cursor: pointer;
+	}
 }
 
 /* Augmentation de la taille globale du texte*/

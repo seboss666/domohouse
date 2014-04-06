@@ -11,20 +11,39 @@
 			
 <?php
 		$deviceInfo = deviceType($device);
-		if ($deviceInfo[$liste[$i]['type']]['format'] == 'img') {
+		if ($deviceInfo['format'] == "unknown") {
 ?>
 
-				<img class="icone" onclick="document.location.href = 'index.php?page=switch&action=<?php echo $deviceInfo[$liste[$i]['type']]['action'] . "&data=" . $device['Status'] . "&idx=" . $device['idx']; ?>'" src="img/<?php echo $deviceInfo[$liste[$i]['type']]['etat']; ?>.png"></img>
+				<img class="unknown" src="img/notrecognized.png">
+				
+<?php
+		}
+		elseif ($deviceInfo['format'] == "scene") { 
+?>
+
+				<img class="scene" onclick="document.location.href = 'index.php?page=scene&action=<?php echo $deviceInfo['data'][$liste[$i]['type']]['action'] . "&idx=" . $device['idx']; ?>'" src="img/<?php echo $deviceInfo['data'][$liste[$i]['type']]['etat']; ?>.png">
 
 <?php
 		}
-		elseif ($deviceInfo[$liste[$i]['type']]['format'] == 'text') {
+		elseif ($deviceInfo['format'] == "group") {
 ?>
 
-				<div class="text <?php echo $deviceInfo[$liste[$i]['type']]['format'] . " " . $deviceInfo[$liste[$i]['type']]['etat']; ?>">
-					<?php echo $deviceInfo[$liste[$i]['type']]['value']; ?>
-				</div>
+				<img class="group" onclick="document.location.href = 'index.php?page=group&action=<?php echo $deviceInfo['data'][$liste[$i]['type']]['action'] . "&data=" . $device['Status'] . "&idx=" . $device['idx']; ?>'" src="img/<?php echo $deviceInfo['data'][$liste[$i]['type']]['etat']; ?>.png">
+
+<?php
+		}
+		elseif ($deviceInfo['format'] == "switches") {
+?>
+
+				<img class="switches" onclick="document.location.href = 'index.php?page=switch&action=<?php echo $deviceInfo['data']['switch']['action'] . "&data=" . $device['Status'] . "&idx=" . $device['idx']; ?>'" src="img/<?php echo $deviceInfo['data']['switch']['etat']; ?>.png">
 				
+<?php
+		}
+		elseif ($deviceInfo['format'] == 'sensors') {
+?>
+
+				<div class="sensors <?php echo $deviceInfo['data'][$liste[$i]['type']]['etat']; ?>"><?php echo $deviceInfo['data'][$liste[$i]['type']]['value']; ?></div>
+
 <?php
 		}
 		$i++;

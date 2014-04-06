@@ -28,6 +28,16 @@ function getAllDevices() {
 	}
 }
 
+function getAllPlans() {
+	$plans = getJson('type=plans');
+	if (isset($plans['result'])) {
+		return $plans['result'];
+	}
+	else {
+		throw new Exception('Aucun plan renvoyé');
+	}
+}
+
 function getPlan($id) {
 	$plan = getJson('type=devices&plan=' . $id);
 	if (isset($plan['result'])) {
@@ -35,12 +45,10 @@ function getPlan($id) {
 	}
 	else {
 		throw new Exception('Plan inexistant ou vide');
-		
 	}
 }
 
 function getWeather($townid) {
-
 	$result = file_get_contents('http://weather.yahooapis.com/forecastrss?w=' . $townid . '&u=c');
 	$xml = simplexml_load_string($result);
 	 
@@ -60,8 +68,26 @@ function getWeather($townid) {
 		$weatherDetail = array('Erreur' => 'Aucun résultat');
 	}
 	return $weatherDetail;
+}
 
+function getDateInfos() {
+	$str = '';
+	echo preg_replace("", "", $str);
+}
 
+function getSunRiseSet() {
+	$SunRiseSet = getJson('type=command&param=getSunRiseSet');
+	if ($SunRiseSet['status'] == "OK") {
+		return $SunRiseSet;
+	}
+	else {
+		throw new Exception('Réponse du serveur Domoticz incorrecte');
+	}
+}
+
+function getStatus() {
+	$result = getJson('type=command&param=checkforupdate');
+	return $result;
 }
 
 ?>

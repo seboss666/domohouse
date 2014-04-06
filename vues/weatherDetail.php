@@ -2,6 +2,7 @@
 
 
 <div class="column full">
+
 <?php
 	if (!isset($weather['Erreur'])) { 
 		include('include/modeles/weathercodes.php');
@@ -31,6 +32,7 @@
 		echo $weather['Erreur'];
 	}
 ?>
+
 </div>
 
 <?php $contenu = ob_get_clean(); ?>

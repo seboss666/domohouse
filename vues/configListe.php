@@ -10,37 +10,49 @@
 	$i = 0;
 	foreach($liste_idx as $idx) {
 		foreach ($devicesFinal as $device) {
-			if($device['Type'] != 'Scene' AND $device['Type'] != 'Group') {
-				if ($idx == $device['idx']) {
-					$deviceInfo = deviceType($device);
+			if ($idx == $device['idx']) {
+				$deviceInfo = deviceType($device);
 ?>
 
 					<li id="<?php echo $device['idx'] . ":" . $liste[$i]['type']; ?>">
 					
 <?php
-					if ($deviceInfo[$liste[$i]['type']]['format'] == 'img') {
+				if ($deviceInfo['format'] == "unknown") {
 ?>
 
-						<div><img src="img/<?php echo $deviceInfo[$liste[$i]['type']]['etat']; ?>.png"></img></div>
+						<div><img src="img/notrecognized.png"></div>
 
 <?php
-					}
-					elseif ($deviceInfo[$liste[$i]['type']]['format'] == 'text') {
+				}
+				elseif ($deviceInfo['format'] == "scene" OR $deviceInfo['format'] == "group") {
 ?>
 
-						<div class="<?php echo $deviceInfo[$liste[$i]['type']]['format'] . " " . $deviceInfo[$liste[$i]['type']]['etat']; ?>">
-							<?php echo $deviceInfo[$liste[$i]['type']]['value']; ?>
+						<div><img src="img/<?php echo $deviceInfo['data'][$liste[$i]['type']]['etat']; ?>.png"></div>
+						
+<?php
+				}
+				elseif ($deviceInfo['format'] == 'switches') {
+?>
+
+						<div><img src="img/<?php echo $deviceInfo['data']['switch']['etat']; ?>.png"></div>
+
+<?php
+				}
+				elseif ($deviceInfo['format'] == 'sensors') {
+?>
+
+						<div class="<?php echo $deviceInfo['data'][$liste[$i]['type']]['etat']; ?>">
+							<?php echo $deviceInfo['data'][$liste[$i]['type']]['value']; ?>
 						</div>
 
 <?php
-					}
+				}
 ?>
 
 					<div class="nom"><p><?php echo $device['Name']; ?></p></div>
 					</li>
 					
 <?php
-				}
 			}	
 		}
 		$i++;
@@ -55,42 +67,55 @@
 				
 <?php
 	foreach ($devicesFinal as $device) {
-		if($device['Type'] != 'Scene' AND $device['Type'] != 'Group') {
-			$deviceInfo = deviceType($device);
-			foreach($deviceInfo as $deviceData) {
-				$IsUsed = 0;
-				foreach($liste as $idx_type) {
-					if (($idx_type['idx'] == $device['idx']) and ($idx_type['type'] == $deviceData['type'])) {
-						$IsUsed = 1;
-					}
+		$deviceInfo = deviceType($device);
+		foreach($deviceInfo['data'] as $deviceData) {
+			$IsUsed = 0;
+			foreach($liste as $idx_type) {
+				if (($idx_type['idx'] == $device['idx']) and ($idx_type['type'] == $deviceData['type'])) {
+					$IsUsed = 1;
 				}
+			}
 			
-				if($IsUsed != 1) {
+			if($IsUsed != 1) {
 ?>
 
 					<li id="<?php echo $device['idx'] . ":" . $deviceData['type']; ?>">
 					
 <?php
-					if ($deviceData['format'] == 'img') {
+				if ($deviceInfo['format'] == 'unknown') {
 ?>
 						
-						<div><img src="img/<?php echo $deviceData['etat']; ?>.png"></img></div>
+						<div><img src="img/notrecognized.png"></div>
 
 <?php
-					}
-					elseif ($deviceData['format'] == 'text') {
+				}
+				elseif ($deviceInfo['format'] == 'scene' OR $deviceInfo['format'] == 'group') {
 ?>
 
-						<div class="<?php echo $deviceData['format'] . " " . $deviceData['etat']; ?>"><?php echo $deviceData['value']; ?></div>
+						<div><img src="img/<?php echo $deviceData['etat']; ?>.png"></div>
+						
+<?php						
+				}
+				elseif ($deviceInfo['format'] == 'switches') {
+?>
+
+						<div><img src="img/<?php echo $deviceData['etat']; ?>.png"></div>
+
+<?php						
+				}
+				elseif ($deviceInfo['format'] == 'sensors') {
+?>
+
+						<div class="<?php echo $deviceData['etat']; ?>"><?php echo $deviceData['value']; ?></div>
 
 <?php
-					}
+				}
 ?>
 
 						<div class="nom"><p><?php echo $device['Name']; ?></p></div>
 					</li>
+					
 <?php
-				}
 			}
 		}
 	}	

@@ -63,7 +63,7 @@ body {
 	height: 100%;
 	overflow-y: auto; /* Enable vertical scrolling on Slidebars when needed. */
 	position: fixed;
-	top: 0;
+	top: 65px;
 	z-index: 0; /* Slidebars sit behind sb-site. */
 	visibility: hidden; /* Initially hide the Slidebars. */
 	background-color: #222222; /* Default Slidebars background colour, overwrite this with your own css. */
@@ -87,7 +87,7 @@ html.sb-static .sb-slidebar,
 }
 
 .sb-slidebar.sb-style-overlay {
-	z-index: 9999; /* Set z-index high to ensure it overlays any other site elements. */
+	z-index: 9998; /* Set z-index high to ensure it overlays any other site elements. */
 }
 
 /* Slidebar widths for devices that don't support media queries. */
