@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
 
-<?php /*if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
-' ; }*/ ?>
+<?php if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
+' ; } ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="Viewport" content="width=device-width, initial-scale=1">
 
@@ -67,9 +67,9 @@
 		$currentWeather = weatherHeader($Town);
 		if (!isset($currentWeather['Erreur'])) {
 		?>
-		<div onclick="location.href='index.php?page=meteo&id=<?php echo $Town; ?>'" id="weather">
-			<img class="meteo_img" src="<?php echo $currentWeather['img']; ?>">
-			<span class="meteo_txt"><?php echo $currentWeather['temp']; ?>&deg;C</span>
+		<div id="weather" onclick="location.href='index.php?page=meteo&id=<?php echo $Town; ?>'">
+			<img src="<?php echo $currentWeather['img']; ?>">
+			<span><?php echo $currentWeather['temp']; ?>&deg;C</span>
 		</div>
 <?php 
 		}
@@ -89,13 +89,17 @@
 	</section>
 	</div>
 
-	<div class="sb-slidebar sb-left sb-style-push">
+	<div class="sb-slidebar sb-left sb-style-overlay">
 		<ul class="menulist">
-			<li><a href="index.php?page=accueil"><img class="panelhome" src="img/pixel.gif" alt="Accueil"></a></li>
-			<li><a href="index.php?page=configIp"><img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz"></a></li>
-			<li><a href="index.php?page=configListe"><img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils"></a></li>
-			<li><a href="index.php?page=configTown"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"></a></li>
-			<li><a href="index.php?page=about"><img class="panelabout" src="img/pixel.gif" alt="À propos"></a></li>
+			<li><a href="index.php?page=accueil"><img class="panelhome" src="img/pixel.gif" alt="Accueil"><span>Accueil</span></a></li>
+			<li><a href="#" class="toggle-submenu"><img class="panelconfip" src="img/pixel.gif" alt="Configuration"><span>Configuration</span></a>
+				<ul class="submenu">
+					<li><a href="index.php?page=configIp"><img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz"><span>Domoticz</span></a></li>
+					<li><a href="index.php?page=configListe"><img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils"><span>Affichage</span></a></li>
+					<li><a href="index.php?page=configTown"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"><span>Ville</span></a></li>
+				</ul>
+			<li><a href="index.php?page=meteo&id=<?php echo $Town; ?>"><img class="panelmeteo" src="img/pixel.gif" alt="Météo locale"><span>M&eacute;t&eacute;o</span></a></li>
+			<li><a href="index.php?page=about"><img class="panelabout" src="img/pixel.gif" alt="À propos"><span>A propos</span></a></li>
 		</ul>
 	</div>
 	<!-- Slidebars -->
@@ -104,6 +108,17 @@
 		(function($) {
 			$(document).ready(function() {
 				$.slidebars();
+				
+				$('.toggle-submenu').off('click').on('click', function() {
+					$submenu = $(this).parent().children('.submenu');
+					$(this).add($submenu).toggleClass('sb-submenu-active'); // Toggle active class.
+					
+					if ($submenu.hasClass('sb-submenu-active')) {
+						$submenu.slideDown(200);
+					} else {
+						$submenu.slideUp(200);
+					}
+				});
 			});
 		}) (jQuery);
 	</script>

@@ -21,7 +21,7 @@
 		elseif ($deviceInfo[$liste[$i]['type']]['format'] == 'text') {
 ?>
 
-				<div class="<?php echo $deviceInfo[$liste[$i]['type']]['format'] . " " . $deviceInfo[$liste[$i]['type']]['etat']; ?>">
+				<div class="text <?php echo $deviceInfo[$liste[$i]['type']]['format'] . " " . $deviceInfo[$liste[$i]['type']]['etat']; ?>">
 					<?php echo $deviceInfo[$liste[$i]['type']]['value']; ?>
 				</div>
 				

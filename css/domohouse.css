@@ -33,22 +33,75 @@ body {
 }
 
 /* =====================================================================
-				Panel					*/
+ *										Panel							*/
 
-/* panel width */
-	.sb-slidebar {
-		width: 50px;
-	}
+/* Sidebar width */
+.sb-slidebar {
+	top: 65px;
+	width: 210px;
+	box-shadow: 2px 2px 2px black;
+}
+
+.sb-slidebar.sb-style-overlay {
+	z-index: 9998; /* Set z-index high to ensure it overlays any other site elements. */
+}
 
 ul.menulist {
 	list-style: none;
-	margin-left: -32px;
+	padding: 0;
+	margin: 0;
 }
 
-
-ul.menulist>li>a>img {
-	margin: 15px auto;
+ul.menulist ul {
+	list-style: none;
 }
+
+ul.menulist li {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+ul.menulist > li:first-child {
+	border-top: none;
+}
+
+ul.menulist > li:last-child {
+	border-bottom: none;
+}
+
+ul.menulist li a {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	padding: 0.5rem 0.25rem;
+	margin: 0;
+	color: #DEDEDE;
+	text-decoration: none;
+}
+
+ul.menulist span {
+	margin-left: 20px;
+	font-size: 1.1rem;
+	text-align: left;
+}
+
+/* =====================================================================
+ * 									Submenu								*/
+
+.submenu {
+	display: none;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	background-color: #666666;
+}
+
+/* =====================================================================
+ * 									Icones								*/
 
 img.panelhome {
 	width: 32px;
@@ -81,27 +134,42 @@ img.panelabout {
 }
 
 /* =====================================================================
-				Header					*/
+ *										Header							*/
 
 header {
-	background: url(../img/bg01.jpg) repeat scroll 0% 0% rgba(0,0,0,0.85);
-	width: 100%;
-	min-height: 65px;
 	position: fixed;
 	top: 0;
-	z-index: 9998;
+	z-index: 9999;
+	display: -webkit-box;
+	display: -webkit-flex;
 	display: flex;
+	-webkit-box-direction: row;
+	-webkit-flex-direction: row;
 	flex-direction: row;
+	-webkit-box-pack: start;
+	-webkit-justify-content: space-between;
 	justify-content: space-between;
+	-webkit-box-align: stretch;
+	-webkit-align-items: stretch;
 	align-items: stretch;
+	width: 100%;
+	min-height: 65px;
 	padding: 3px;
-	border-bottom: 1px solid white;
+	background: url(../img/bg01.jpg) repeat scroll 0% 0% rgba(0,0,0,0.85);
+	border-bottom: 1px solid rgba(255,255,255,0.06);
+	box-shadow: 2px 2px 2px black;
 }
 
 /* Icone gauche & droite */
 #home, #weather {
+	display: -webkit-box;
+	display: -webkit-flex;
 	display: flex;
+	-webkit-box-direction: row;
+	-webkit-flex-direction: row;
 	flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
 	align-items: center;
 }
 
@@ -110,10 +178,7 @@ header {
 	width: 48px;
 }
 
-.meteo_img {
-}
-
-.meteo_txt {
+#weather span {
 	font-size: 2rem;
 	font-weight: normal;
 	display: none;
@@ -121,45 +186,52 @@ header {
 
 /* Mise en forme de la date & heure */
 #date_heure {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
 	flex: 1;
 	text-align: center;
 }
 
 /* =====================================================================
-				Section 				*/
+ *									Section 							*/
+
+#sb-site {
+	height: auto; /* Initially set here but accurate height is set by slidebars.js */
+}
 
 section {
 	text-align: center;
-	padding-top : 60px;
+	margin-top : 70px;
 }
 
-.column { margin-bottom: 1.5rem; }
+.column {
+	float: left;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
 
+.column.full { width: 100%; }
+.column.half { width: 50%; }
 
 /* =====================================================================
-			Affichage appareils				*/
+ *								Affichage appareils						*/
 
-.icone {
+.icone, .text {
 	display: block;
 	width: 90px;
 	height: 90px;
 	margin: 5px auto 0 auto;
 	text-align: center;
 	padding-bottom: 2px;
-	cursor: pointer;
 }
 
 .text {
-	display: block;
-	width: 90px;
-	height: 90px;
-	margin: 5px auto 0 auto;
-	text-align: center;
 	font-size: 3rem;
 	padding-top: 1rem;
 }
 
-/* Températures */
+/* =====================================================================
+ *								Températures 							*/
 
 .r0010 {
 	color: #0058b7;
@@ -185,7 +257,8 @@ section {
 	color: #d12c2c;
 }
 
-/* Météo */
+/* ===================================================================== 
+ *									Météo					 			*/
 
 .sunshine {
 	background: url(../img/sunshine.png) no-repeat;
@@ -195,9 +268,12 @@ section {
 	background: url(../img/cloudy.png) no-repeat;
 }
 
+.forecast {
+	display: inline-block;
+}
 
 /* =====================================================================
-		CSS pour les fichiers de configuration			*/
+ *						CSS pour les fichiers de configuration			*/
 
 /* <ul> */
 #SortedList, #UnusedList { 
@@ -208,10 +284,19 @@ section {
 
 /* <li> */
 #SortedList li, #UnusedList li, .listePlaceholder {
+	display: -webkit-box;
+	display: -webkit-flex;
 	display: flex;
+	-webkit-box-orient: row;
+	-webkit-flex-direction: row;
 	flex-direction: row;
+	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
 	justify-content: flex-start;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
 	align-items: center;
 	padding: 0 5px;
 	background: rgba(10,10,10,0.3);
@@ -227,6 +312,8 @@ section {
 /* Premier élément de chaque liste */
 #SortedList li:first-of-type, #UnusedList li:first-of-type {
 	border-top: 1px solid rgba(255,255,255,0.06);
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
 	justify-content: center;
 	font-weight: bold;
 	padding: 5px;
@@ -240,6 +327,8 @@ section {
 
 /* Nom de l'appareil */
 #SortedList .nom, #UnusedList .nom {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
 	flex: 1;
 	padding: 0 5px;
 }
@@ -260,19 +349,6 @@ section {
 /* ====================================================================
 				Media Queries				*/
 
-
-@media screen and (min-width: 20rem) {
-	.column {
-		float: left;
-		margin: 0;
-		padding-left: 1rem;
-		padding-right: 1rem;
-	}
-
-	.column.full { width: 100%; }
-	.column.half { width: 50%; }
-}
-
 /* Augmentation de la taille globale du texte, et celle des icones */
 @media screen and (min-width: 40.5rem) {
 	html {
@@ -284,7 +360,15 @@ section {
 		height: 128px;
 	}
 	
-	.meteo_txt {
+	.icone {
+		cursor: pointer;
+	}
+	
+	#weather, #date_heure, #home {
+		cursor: pointer;
+	}
+	
+	#weather span {
 		display: inline;
 	}
 }
