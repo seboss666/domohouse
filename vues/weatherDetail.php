@@ -6,19 +6,25 @@
 	if (!isset($weather['Erreur'])) { 
 		include('include/modeles/weathercodes.php');
 ?>
-	<h1 style="margin-bottom: 0">Ville : <?php echo $weather['Location'][0]['city'] . ',' . $weather['Location'][0]['region']; ?></h1>
-	<small><?php echo $weather['Current']['date']; ?></small>
-	<h2>Current Conditions</h2>
+
+	<small>Dernière mise à jour : <?php echo $weather['Current']['date']; ?></small>
 	<p>
 		<span style="font-size:56px; font-weight:bold;"><?php echo $weather['Current']['temp']; ?>&deg;C</span>
 		<br/>
-		<img src="http://l.yimg.com/a/i/us/we/52/<?php echo $weather['Current']['code']; ?>.gif" style="width: 52px; height: 52px; vertical-align: middle;"/>&nbsp;<?php echo $weathercodes[(string)$weather['Current']['code']]; ?>
+		<img src="img/weather/<?php echo $weather['Current']['code']; ?>.png" style="width: 128px; height: 128px; vertical-align: middle;"/>&nbsp;<?php echo $weathercodes[(string)$weather['Current']['code']]; ?>
 	</p>
 	<h2>Prévisions</h2>
 
 <?php 
 		foreach($weather['Forecast'] as $futur) {
-			echo $futur['day'] . ' - ' . $weathercodes[(string)$futur['code']] . '. Code: ' . $futur['code'] . ' High: ' . $futur['high'] . ' Low: ' . $futur['low'] . '<br>';
+?>
+
+	<div class="forecast" style="width: 50px";>
+		<span><?php echo $futur['day']; // . ' High: ' . $futur['high'] . ' Low: ' . $futur['low'] . '<br>';?></span>
+		<img src="img/weather/<?php echo $futur['code']; ?>.png" style="width: 48px; height: 48px; vertical-align: middle;"/>
+	</div>		
+	
+<?php
 		}
 	}
 	else {

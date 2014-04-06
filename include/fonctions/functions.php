@@ -139,7 +139,7 @@ function weatherHeader($townid) {
   $currentWeather = array();
   $weather = getWeather($townid);
   if (!isset($weather['Erreur'])) {
-    $currentWeather['img'] = "http://l.yimg.com/a/i/us/we/52/" . $weather['Current']['code'] . ".gif";
+    $currentWeather['img'] = "img/weather/" . $weather['Current']['code'] . ".png";
     $currentWeather['temp'] = $weather['Current']['temp'];
   }
   else {

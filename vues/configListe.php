@@ -10,7 +10,7 @@
 	$i = 0;
 	foreach($liste_idx as $idx) {
 		foreach ($devicesFinal as $device) {
-			if($device['Type'] != 'Scene') {
+			if($device['Type'] != 'Scene' AND $device['Type'] != 'Group') {
 				if ($idx == $device['idx']) {
 					$deviceInfo = deviceType($device);
 ?>
@@ -55,7 +55,7 @@
 				
 <?php
 	foreach ($devicesFinal as $device) {
-		if($device['Type'] != 'Scene') {
+		if($device['Type'] != 'Scene' AND $device['Type'] != 'Group') {
 			$deviceInfo = deviceType($device);
 			foreach($deviceInfo as $deviceData) {
 				$IsUsed = 0;
