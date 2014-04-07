@@ -2,8 +2,10 @@
 
 		<div class="row clearfix">
 			<div class="column full">
-				<br><form method="POST" action="index.php?page=configSaveTown" id="triForm" name="triForm">
-					Code de la Ville: <input type="text" name="Town" <?php if ($parsedJSON['Town'] !== '') { echo 'value="'. $parsedJSON['Town'];} ?>"><br>
+				<form method="POST" action="index.php?page=configSaveTown" id="townForm" name="townForm">
+					<p class="configForm">
+						<label for="Town">Code ville: </label><input type="text" id="Town" name="Town" value="<?php  echo $parsedJSON['Town']; ?>" /><br>
+					</p>
 					<input class="sendbutton" type="submit" value="Enregistrer">
 				</form>
 			</div>

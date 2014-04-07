@@ -257,6 +257,31 @@ section {
 	color: #666;
 }
 
+/* Champs de formulaires IP/Port et météo */
+
+div>form {
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+
+.configForm {
+	text-align: right;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+p.configForm>label {
+	display: block;
+	float: left;
+	width: 30%;
+}
+
+p.configForm>input {
+	width: 70%;
+	color: rgb(92,92,92);
+}
+
 /* ====================================================================
 				Media Queries				*/
 
@@ -287,6 +312,10 @@ section {
 	.meteo_txt {
 		display: inline;
 	}
+
+	div>form {
+	width: 30%;
+}
 }
 
 /* Augmentation de la taille globale du texte*/
