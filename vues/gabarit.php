@@ -54,7 +54,7 @@
 
 <body>
 		
-	<header class="sb-slide">
+	<header>
 		<div id="home" class="sb-toggle-left"><img src="img/menu2.png"></div>
 		<div id="date_heure">
 			<div id="heure">Heure</div>
