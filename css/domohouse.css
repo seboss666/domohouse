@@ -32,7 +32,6 @@ body {
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
 /* Panel */
 
 /* Sidebar width */
@@ -89,10 +88,6 @@ ul.menulist span {
 	text-align: left;
 }
 
-ul.menulist > li > a > img {
-/*	margin: 15px auto;*/
-}
-
 /* Submenu */
 
 .submenu {
@@ -105,26 +100,6 @@ ul.menulist > li > a > img {
 
 /*  Icones */
 
-=======
-/* =====================================================================
-				Panel					*/
-
-/* panel width */
-	.sb-slidebar {
-		width: 50px;
-	}
-
-ul.menulist {
-	list-style: none;
-	margin-left: -32px;
-}
-
-
-ul.menulist>li>a>img {
-	margin: 15px auto;
-}
-
->>>>>>> a4ce10b3e4fbf35e9a882517a67f9939bc61533c
 img.panelhome {
 	width: 32px;
 	height: 32px;
