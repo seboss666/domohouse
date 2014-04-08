@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
 
-<?php/* if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
-' ; } */?>
+<?php if ($refresh) { echo '	<meta http-equiv="refresh" content="30">
+' ; } ?>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="Viewport" content="width=device-width, initial-scale=1">
 
