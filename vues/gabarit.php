@@ -89,7 +89,7 @@
 		</div>
 	</section>
 	</div>
-	<div class="sb-slidebar sb-left sb-style-overlay sb-static">
+	<div class="sb-slidebar sb-left sb-style-overlay">
 		<ul class="menulist">
 			<li>
 				<a href="index.php?page=accueil">
