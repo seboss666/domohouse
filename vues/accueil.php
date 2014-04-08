@@ -14,7 +14,7 @@
 		if ($deviceInfo[$liste[$i]['type']]['format'] == 'img') {
 ?>
 
-				<img class="icone" onclick="document.location.href = 'index.php?page=switch&action=<?php echo $deviceInfo[$liste[$i]['type']]['action'] . "&data=" . $device['Status'] . "&idx=" . $device['idx']; ?>'" src="img/<?php echo $deviceInfo[$liste[$i]['type']]['etat']; ?>.png"></img>
+				<img class="icone" <?php if (isset($deviceInfo[$liste[$i]['type']]['action'])) { ?> onclick="document.location.href = 'index.php?page=switch&action=<?php echo $deviceInfo[$liste[$i]['type']]['action'] . "&data=" . $device['Status'] . "&idx=" . $device['idx'] . '\'"' ; } ?> src="img/<?php echo $deviceInfo[$liste[$i]['type']]['etat']; ?>.png"></img>
 
 <?php
 		}
