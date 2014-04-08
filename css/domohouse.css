@@ -42,6 +42,10 @@ body {
 	top: 67px;
 }
 
+.sb-slidebar.sb-style-overlay {
+	z-index: 9998; /* Set z-index high to ensure it overlays any other site elements. */
+}
+
 ul.menulist {
 	list-style: none;
 	padding: 0;
@@ -105,12 +109,6 @@ img.panelhome {
 	background: url(../img/menusprite.png) 0 -32px;
 }
 
-img.panelconf {
-	width: 32px;
-	height: 32px;
-	background: url(../img/menusprite.png) 32px -64px;
-}
-
 img.panelconfip {
 	width: 32px;
 	height: 32px;
@@ -141,7 +139,7 @@ img.panelabout {
 header {
 	position: fixed;
 	top: 0;
-	z-index: 9998;
+	z-index: 9999;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
