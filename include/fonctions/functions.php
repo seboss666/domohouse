@@ -3,6 +3,7 @@
 require('include/modeles/modele.php');
 
 function filterDevices($idxList) {
+
 	$devlist = getAllDevices();
 	$finalDev = array();
 	foreach ($idxList as $idx) {

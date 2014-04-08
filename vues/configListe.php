@@ -36,6 +36,7 @@
 
 						<div><img src="img/<?php echo $deviceInfo['data']['switch']['etat']; ?>.png"></div>
 
+					
 <?php
 				}
 				elseif ($deviceInfo['format'] == 'sensors') {
@@ -74,9 +75,8 @@
 				if (($idx_type['idx'] == $device['idx']) and ($idx_type['type'] == $deviceData['type'])) {
 					$IsUsed = 1;
 				}
-			}
 			
-			if($IsUsed != 1) {
+				if($IsUsed != 1) {
 ?>
 
 					<li id="<?php echo $device['idx'] . ":" . $deviceData['type']; ?>">

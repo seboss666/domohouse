@@ -49,6 +49,7 @@ function getPlan($id) {
 }
 
 function getWeather($townid) {
+
 	$result = file_get_contents('http://weather.yahooapis.com/forecastrss?w=' . $townid . '&u=c');
 	$xml = simplexml_load_string($result);
 	 
@@ -70,11 +71,6 @@ function getWeather($townid) {
 	return $weatherDetail;
 }
 
-function getDateInfos() {
-	$str = '';
-	echo preg_replace("", "", $str);
-}
-
 function getSunRiseSet() {
 	$SunRiseSet = getJson('type=command&param=getSunRiseSet');
 	if ($SunRiseSet['status'] == "OK") {
@@ -83,11 +79,6 @@ function getSunRiseSet() {
 	else {
 		throw new Exception('Réponse du serveur Domoticz incorrecte');
 	}
-}
-
-function getStatus() {
-	$result = getJson('type=command&param=checkforupdate');
-	return $result;
 }
 
 ?>

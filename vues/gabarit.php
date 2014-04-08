@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="fr">
 <head>
 
@@ -66,11 +65,13 @@
 	if ($Town !== "" ) {
 		$currentWeather = weatherHeader($Town);
 		if (!isset($currentWeather['Erreur'])) {
-		?>
+?>
+
 		<div id="weather" onclick="location.href='index.php?page=meteo&id=<?php echo $Town; ?>'">
 			<img src="<?php echo $currentWeather['img']; ?>">
 			<span><?php echo $currentWeather['temp']; ?>&deg;C</span>
 		</div>
+
 <?php 
 		}
 	}

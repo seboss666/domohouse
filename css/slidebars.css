@@ -87,7 +87,7 @@ html.sb-static .sb-slidebar,
 }
 
 .sb-slidebar.sb-style-overlay {
-	z-index: 9998; /* Set z-index high to ensure it overlays any other site elements. */
+	z-index: 9999; /* Set z-index high to ensure it overlays any other site elements. */
 }
 
 /* Slidebar widths for devices that don't support media queries. */

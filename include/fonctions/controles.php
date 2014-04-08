@@ -121,7 +121,6 @@ function configurationSaveTown($Town) {
 
 	file_put_contents("include/configData.json", json_encode($parsedJSON));
 	header('Location: index.php');
-
 }
 
 function weatherDetail($townid) {
