@@ -54,7 +54,7 @@
 
 <body>
 		
-	<header class="sb-slide">
+	<header>
 		<div id="home" class="sb-toggle-left"><img src="img/menu2.png"></div>
 		<div id="date_heure">
 			<div id="heure">Heure</div>
@@ -92,7 +92,7 @@
 	<div class="sb-slidebar sb-left sb-style-overlay">
 		<ul class="menulist">
 			<li><a href="index.php?page=accueil"><img class="panelhome" src="img/pixel.gif" alt="Accueil"><span>Accueil</span></a></li>
-			<li><a href="#" class="toggle-submenu"><img class="panelconfip" src="img/pixel.gif" alt="Configuration"><span>Configuration</span></a>
+			<li><a href="#" class="toggle-submenu"><img class="panelconf" src="img/pixel.gif" alt="Configuration"><span>Configuration</span></a>
 				<ul class="submenu">
 					<li><a href="index.php?page=configIp"><img class="panelconfip" src="img/pixel.gif" alt="Configuration IP Domoticz"><span>Domoticz</span></a></li>
 					<li><a href="index.php?page=configListe"><img class="panelconflist" src="img/pixel.gif" alt="Configuration liste appareils"><span>Affichage</span></a></li>
