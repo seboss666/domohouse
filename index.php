@@ -171,7 +171,8 @@ try {
 						}
 						$parsedJSON = json_decode($switched, true);
 						if ($parsedJSON['status'] == "OK") {
-							header('Location: index.php');
+							$redirect_to = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'index.php';
+							header('Location: ' . $redirect_to);
 						}
 					}
 					else {

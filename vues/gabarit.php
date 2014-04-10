@@ -99,7 +99,7 @@
 			</li>
 			<li>
 				<a href="#" class="toggle-submenu">
-					<img class="panelconfip" src="img/pixel.gif" alt="Configuration">
+					<img class="panelconf" src="img/pixel.gif" alt="Configuration">
 					<span>Configuration</span>
 				</a>
 				<ul class="submenu">
