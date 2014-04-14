@@ -137,8 +137,11 @@ function groupStatus($device) {
 	if ($device['Status'] == "On") {
 		$status = "switchon";
 	}
-	else {
+	elseif ($device['Status'] == "Off") {
 		$status = "switchoff";
+	}
+	else {
+		$status = "switchmixed";
 	}
 
 	return $status;
