@@ -242,7 +242,7 @@ section {
 }
 
 .sensors {
-	font-size: 3rem;
+	font-size: 2.5rem;
 	padding-top: 1rem;
 }
 
@@ -397,6 +397,10 @@ p.configForm>input {
 		height: 128px;
 	}
 	
+	.sensors {
+		font-size: 3rem;
+	}
+
 	.switches, .group, .scene {
 		cursor: pointer;
 	}

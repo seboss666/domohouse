@@ -60,6 +60,18 @@ function deviceType($device) {
 			$deviceInfo['data']['humidity']['type'] = 'humidity';
 			$deviceInfo['data']['humidity']['value'] = $device['Humidity'] . "%";
 			break;
+		case 'Temp + Humidity + Baro':
+			$deviceInfo['format'] = 'sensors';
+			$deviceInfo['data']['temp']['type'] = 'temp';
+			$deviceInfo['data']['temp']['value'] = number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '') . "°";
+			$deviceInfo['data']['temp']['etat'] = tempStatus($device['Temp']);
+			$deviceInfo['data']['humidity']['type'] = 'humidity';
+			$deviceInfo['data']['humidity']['etat'] = 'none';
+			$deviceInfo['data']['humidity']['value'] = $device['Humidity'] . "%";
+			$deviceInfo['data']['baro']['type'] = 'baro';
+			$deviceInfo['data']['baro']['etat'] = 'none';
+			$deviceInfo['data']['baro']['value'] = $device['Barometer'] . "hPa";
+			break;
 		case 'Scene':
 			$deviceInfo['format'] = 'scene';
 			$deviceInfo['data']['scene']['type'] = 'scene';
