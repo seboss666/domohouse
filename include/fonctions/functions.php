@@ -58,6 +58,7 @@ function deviceType($device) {
 			$deviceInfo['data']['temp']['value'] = number_format(floatval($device['Temp']), $decimals = 1, $dec_point = '.', $thousands_sep = '') . "°";
 			$deviceInfo['data']['temp']['etat'] = tempStatus($device['Temp']);
 			$deviceInfo['data']['humidity']['type'] = 'humidity';
+			$deviceInfo['data']['humidity']['etat'] = 'none';
 			$deviceInfo['data']['humidity']['value'] = $device['Humidity'] . "%";
 			break;
 		case 'Temp + Humidity + Baro':
@@ -83,6 +84,15 @@ function deviceType($device) {
 			$deviceInfo['data']['group']['type'] = 'group';
 			$deviceInfo['data']['group']['etat'] = groupStatus($device);
 			$deviceInfo['data']['group']['action'] = 'Toggle';
+			break;
+		case 'General':
+			if ($device['SubType'] == "Percentage") {
+				$deviceInfo['format'] = 'sensors';
+				$deviceInfo['data']['percentage']['etat'] = 'none';
+				$deviceInfo['data']['percentage']['type'] = 'percentage';
+				$deviceInfo['data']['percentage']['value'] = $device['Data'];
+
+			}
 			break;
 		default:
 			$deviceInfo['format'] = 'unknown';
