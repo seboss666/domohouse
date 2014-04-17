@@ -227,9 +227,18 @@ section {
 	padding-right: 1rem;
 }
 
-.column.full { width: 100%; }
-.column.half { width: 50%; }
+.column.full {
+	width: 100%;
+}
 
+.column.half {
+	width: 50%;
+}
+
+/* default size for column, becomes 33% on larger screens, see media queries at the end of the file */
+.column.cell {
+	width: 50%;
+}
 /* Affichage appareils */
 
 .switches, .unknown, .sensors, .group, .scene {
@@ -270,16 +279,6 @@ section {
 
 .r50plus {
 	color: #d12c2c;
-}
-
-/* Météo */
-
-.sunshine {
-	background: url(../img/sunshine.png) no-repeat;
-}
-
-.cloudy {
-	background: url(../img/cloudy.png) no-repeat;
 }
 
 .forecast {
@@ -386,6 +385,29 @@ p.configForm>input {
 
 /* Media Queries */
 
+/*experimental low-res support */
+
+@media screen and (max-width: 17rem) {
+	html {
+		font-size: 80%;
+	}
+
+	.column.cell {
+		width: 100%;
+	}
+
+	.sensors {
+		font-size: 2rem;
+		padding-top: 1rem;
+	}
+
+	.switches, .unknown, .sensors, .group, .scene {
+		width: 64px;
+		height: 64px;
+	}
+
+}
+
 /* Augmentation de la taille globale du texte, et celle des icones */
 @media screen and (min-width: 40.5rem) {
 	html {
@@ -416,6 +438,7 @@ p.configForm>input {
 	#weather, #date_heure, #home {
 		cursor: pointer;
 	}
+
 }
 
 /* Augmentation de la taille globale du texte*/
@@ -423,4 +446,10 @@ p.configForm>input {
 	html {
 		font-size: 120%;
 	}
+
+	.column.cell {
+		width: 33%;
+	}
+
+
 }

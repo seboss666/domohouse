@@ -32,7 +32,7 @@
 					document.triForm.ListeId.value = data;
 				},
 				receive: function(event, ui) {
-					if ($('#SortedList').children('li').length > 7 ) {
+					if ($('#SortedList').children('li').length > 9 ) {
 						$('#UnusedList').sortable('cancel');
 					}
 				}

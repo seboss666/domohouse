@@ -7,7 +7,7 @@
 	foreach ($devicesFinal as $device) {
 ?>
 
-			<div class="column half">
+			<div class="column cell">
 			
 <?php
 		$deviceInfo = deviceType($device);

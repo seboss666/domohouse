@@ -8,7 +8,7 @@
 		foreach($deviceInfo['data'] as $deviceData) {
 ?>
 
-		<div class="column half">
+		<div class="column cell">
 
 <?php
 			if ($deviceInfo['format'] == 'unknown') {
